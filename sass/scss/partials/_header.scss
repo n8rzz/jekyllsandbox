@@ -1,10 +1,7 @@
 /* header.scss #################### */
 .primary-header {
-	min-height: 275px;
+	min-height: 250px;
 	background: $dark-blue;
-	background-image: url('images/500-circle.png');
-	background-position: center center;
-	background-repeat: no-repeat;
 	color: $light-light-blue;
 }
 .primary-header h1 {

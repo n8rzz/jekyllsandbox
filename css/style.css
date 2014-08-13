@@ -139,11 +139,8 @@ ul.pager {
 /* Partials - Sections */
 /* header.scss #################### */
 .primary-header {
-  min-height: 275px;
+  min-height: 250px;
   background: #1c2c46;
-  background-image: url("images/500-circle.png");
-  background-position: center center;
-  background-repeat: no-repeat;
   color: #7689a9; }
 
 .primary-header h1 {
@@ -239,7 +236,7 @@ footer p {
   background: #2c4770;
   color: white;
   overflow: auto;
-  border-top: 6px solid #1c2c46; }
+  border-top: 7px solid #1c2c46; }
 
 .bottom-footer {
   color: white; }
