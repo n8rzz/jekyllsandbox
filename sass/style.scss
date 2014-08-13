@@ -1,0 +1,32 @@
+/* 
+Theme Name: ng-frame
+Theme URI: https://github.com/n8rzz/ng-frame
+Description: HTML5, Bootstrap, bare-bones WordPress theme
+Version: 0.1.0
+Author: n8rzz
+Author URI: http://www.nategeslin.com;
+Tags: HTML5, Bootstrap, bare, simple, blog
+*/
+
+/* Vendor Dependencies */
+//hardwired CDN
+//@import "vendor/bootstrap.scss";
+
+/* Authored Dependencies */
+/* Modules */ //doesn't output any css; mixins, functions, variables,  
+@import "scss/modules/colors";
+@import "scss/modules/typography";
+@import "scss/modules/variables";
+@import "scss/modules/mixins";
+@import "scss/modules/layout";
+
+/* Partials - Elements */
+@import "scss/partials/overboots";
+@import "scss/partials/navigation";
+
+/* Partials - Sections */
+@import "scss/partials/header";
+@import "scss/partials/content";
+@import "scss/partials/sidebar";
+@import "scss/partials/comments";
+@import "scss/partials/footer";

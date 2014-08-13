@@ -9,13 +9,10 @@ title: Biolerplate
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>NG Framework - Barebones</title>
+<title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
 
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
-<!-- build:css style.css -->
-<link rel="stylesheet" type="text/css" href="style.css">
-<!-- endbuild -->
+<link rel="stylesheet" type="text/css" href="{{ "/css/style.css" | prepend: site.baseurl }}">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

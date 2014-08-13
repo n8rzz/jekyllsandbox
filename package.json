@@ -2,18 +2,21 @@
   "name": "jekyllsandbox",
   "version": "0.1.0",
   "description": "n8g with jekyll",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "jekyll",
-    "bootstrap",
-    "responsive"
-  ],
-  "author": "n8g",
+  "author": "n8rzz",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/n8rzz/jekyllsandbox"
+  },
   "devDependencies": {
-    "sass": "^0.5.0"
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-sass": "^0.7.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-express": "^1.4.1",
+    "grunt-open": "^0.2.3",
+    "grunt-shell": "^0.7.0",
+    "matchdep": "^0.3.0",
+    "time-grunt": "^0.4.0"
   }
 }

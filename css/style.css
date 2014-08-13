@@ -1,0 +1,249 @@
+/* 
+Theme Name: ng-frame
+Theme URI: https://github.com/n8rzz/ng-frame
+Description: HTML5, Bootstrap, bare-bones WordPress theme
+Version: 0.1.0
+Author: n8rzz
+Author URI: http://www.nategeslin.com;
+Tags: HTML5, Bootstrap, bare, simple, blog
+*/
+/* Vendor Dependencies */
+/* Authored Dependencies */
+/* Modules */
+/* color-codes.scss #################### */
+/* /color-codes.scss #################### */
+/* typography.scss #################### */
+/*	google sans fonts 	https://www.google.com/fonts#UsePlace:use/Collection:PT+Sans+Narrow|Quicksand:400,700|Ubuntu|Josefin+Sans|Oxygen:400,700 */
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow|Quicksand:400,700|Ubuntu|Josefin+Sans|Oxygen:400,700);
+/* sans-serif */
+/* variables #################### */
+/*-- fonts --*/
+/* /variables #################### */
+/* mixins.scss #################### */
+/* /mixins.scss #################### */
+/* layout.scss #################### */
+body {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 18px;
+  line-height: 1.5em; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Josefin Sans", Helvetica, sans-serif;
+  font-weight: bold; }
+
+h1 {
+  font-size: 64px; }
+  h1 small {
+    padding-top: .25em;
+    display: block;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    color: #4c976d; }
+
+h2 {
+  font-size: 57px; }
+
+h3 {
+  font-size: 51px; }
+
+h4 {
+  font-size: 44px; }
+
+h5 {
+  font-size: 40px; }
+
+h6 {
+  font-size: 30px; }
+
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+  font-size: 45%; }
+
+article {
+  margin-top: 2em;
+  padding: 0.5em 0em 2em 1em; }
+  article h3,
+  article h4 {
+    margin-top: 1em; }
+  article small {
+    font-family: "Ubuntu", sans-serif; }
+  article img {
+    margin: 0.5em 1em; }
+
+hr {
+  width: 75%;
+  margin-top: 3em;
+  margin-bottom: 2em;
+  border-top: 1px dashed #aaa; }
+
+/* /layout.scss #################### */
+footer {
+  background: #1c2c46;
+  font-family: "Quicksand", sans-serif;
+  font-size: 12px; }
+
+footer p {
+  padding: 1em 0; }
+
+/* Partials - Elements */
+/*-- bootstrap class over-writes --*/
+/*-- navigation --*/
+.navbar {
+  margin-bottom: 0;
+  border: none;
+  border-radius: 0; }
+
+.navbar-brand {
+  color: #4c976d !important; }
+
+.navbar-default {
+  background: #2c4770;
+  font-family: "Oxygen", sans-serif; }
+  .navbar-default .navbar-nav > li a {
+    color: white; }
+    .navbar-default .navbar-nav > li a:hover {
+      background-color: #1c2c46;
+      color: #40659f; }
+  .navbar-default .navbar-nav > li.active > a, .navbar-default .navbar-nav > li.active > a:hover, .navbar-default .navbar-nav > li.active > a:focus, .navbar-default .navbar-nav > li.open > a, .navbar-default .navbar-nav > li.open > a:hover, .navbar-default .navbar-nav > li.open > a:focus {
+    background-color: #1c2c46;
+    color: #40659f; }
+  .navbar-default .navbar-collapse {
+    border: none; }
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    background-color: #1c2c46; }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+      color: white; }
+      .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        background-color: #2c4770; }
+
+/*-- body styles --*/
+.jumbotron {
+  margin-bottom: 0; }
+
+.badge {
+  padding: 4px 9px !important;
+  background: #4c976d;
+  font-family: "Oxygen", sans-serif;
+  color: #fff;
+  vertical-align: middle !important; }
+
+ul.pager {
+  font-size: 14px; }
+
+/* navigation.scss	#################### */
+/*-- post nav --*/
+.post-nav-link {
+  margin-top: 50em; }
+
+.post-nav-link a {
+  height: 90px;
+  width: 90px;
+  display: block;
+  padding-top: 35px;
+  text-align: center;
+  border: 2px solid #1c2c46;
+  border-radius: 50%; }
+
+/* /navigation.scss	#################### */
+/* Partials - Sections */
+/* header.scss #################### */
+.primary-header {
+  min-height: 275px;
+  background: #1c2c46;
+  background-image: url("images/500-circle.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #7689a9; }
+
+.primary-header h1 {
+  color: #79b694; }
+
+/* /header.scss #################### */
+/* content.scss #################### */
+.blog-author-meta {
+  padding-top: 1em;
+  padding-bottom: 3em;
+  background-color: #f2f5f7; }
+
+p.blog-post-meta-category {
+  margin-bottom: 0.05em;
+  font-size: 70%;
+  color: #222; }
+
+p.blog-post-meta-tags {
+  font-size: 70%;
+  color: #40659f; }
+
+p.blog-post-meta-category a, p.blog-post-meta-tags a {
+  color: #40659f;
+  font-style: normal !important; }
+
+footer.post-author-meta {
+  margin-top: 2em;
+  margin-bottom: 4em;
+  padding: 5px 20px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-top: 5px solid #40659f;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px; }
+  footer.post-author-meta img {
+    margin-top: 1em;
+    margin-left: 0.5em;
+    padding: 3px; }
+  footer.post-author-meta h4 {
+    margin-top: 0.5em;
+    margin-bottom: 0; }
+  footer.post-author-meta p {
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 2em; }
+
+/* /content.scss #################### */
+#sidebar {
+  margin-top: 3em;
+  padding: 0.5em;
+  font-size: 12px;
+  font-family: "Oxygen", sans-serif;
+  line-height: 1.3em;
+  border: 1px solid #0f5b30; }
+
+/* comments.scss #################### */
+.comments-container {
+  padding: 2em 0 2em 2em;
+  font-size: 12px;
+  line-height: 1.3em;
+  background: #4c976d;
+  border-bottom: 1px solid #052354; }
+
+ol.commentlist {
+  list-style-type: none; }
+
+article.comment {
+  width: 90%;
+  padding-right: 1.25em;
+  padding-left: 1.25em;
+  background: #79b694;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  border-radius: 8px; }
+  article.comment img.avatar {
+    margin: 1em 0;
+    padding-right: 0.5em; }
+
+/* /comments.scss #################### */
+/* footer.scss #################### */
+.top-footer {
+  min-height: 10em;
+  background: #2c4770;
+  color: white;
+  overflow: auto; }
+
+.bottom-footer {
+  color: white; }
+  .bottom-footer p {
+    padding: 0; }
+
+/* /footer.scss #################### */

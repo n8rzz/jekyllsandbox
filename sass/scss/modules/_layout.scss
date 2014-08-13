@@ -1,0 +1,61 @@
+/* layout.scss #################### */
+html {}
+body {
+	@include base-text-style;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: $heading-font;
+	font-weight: bold;
+}
+h1 {
+	font-size: $h1-size;
+	small {
+		padding-top: .25em;
+		display: block;
+		font-family: $ubuntu;
+		font-size: 18px;
+		color: $medium-green;
+	}
+}
+h2 {font-size: $h2-size;}
+h3 {font-size: $h3-size;}
+h4 {font-size: $h4-size;}
+h5 {font-size: $h5-size;}
+h6 {font-size: $h6-size;}
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
+	font-size: 45%;
+}
+
+a {}
+
+article {
+	margin-top: 2em; 
+	padding: 0.5em 0em 2em 1em;
+	h3,
+	h4 { margin-top: 1em;}
+	small {
+		font-family: $ubuntu;
+//		font-size: 25%;
+	}
+	img {
+		margin: 0.5em 1em;
+	}
+}
+
+hr {
+	width: 75%;
+	margin-top: 3em;
+	margin-bottom: 2em;
+	border-top: 1px dashed #aaa;
+}
+/* /layout.scss #################### */
+
+footer {
+	background: $dark-blue;
+	font-family: $footer-font;
+	font-size: $xsm-txt;
+}
+
+footer p {
+	padding: 1em 0;
+}

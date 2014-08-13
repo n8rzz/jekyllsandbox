@@ -1,0 +1,13 @@
+/* header.scss #################### */
+.primary-header {
+	min-height: 275px;
+	background: $dark-blue;
+	background-image: url('images/500-circle.png');
+	background-position: center center;
+	background-repeat: no-repeat;
+	color: $light-light-blue;
+}
+.primary-header h1 {
+	color: $basic-green;
+}
+/* /header.scss #################### */
