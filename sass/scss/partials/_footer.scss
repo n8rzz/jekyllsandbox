@@ -1,9 +1,19 @@
 /* footer.scss #################### */
+footer {
+	font-family: $footer-font;
+	font-size: $sm-txt;
+}
+
+footer p {
+	padding: 1em 0;
+}
+
 .top-footer {
-	min-height: 10em;
+	min-height: 8em;
 	background: $slight-light-blue;
 	color: $footer-txt-color;
 	overflow: auto;
+	border-top: 6px solid $dark-blue;
 }
 .bottom-footer {
 	color: $footer-txt-color;	

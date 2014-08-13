@@ -76,14 +76,6 @@ hr {
   border-top: 1px dashed #aaa; }
 
 /* /layout.scss #################### */
-footer {
-  background: #1c2c46;
-  font-family: "Quicksand", sans-serif;
-  font-size: 12px; }
-
-footer p {
-  padding: 1em 0; }
-
 /* Partials - Elements */
 /*-- bootstrap class over-writes --*/
 /*-- navigation --*/
@@ -235,11 +227,19 @@ article.comment {
 
 /* /comments.scss #################### */
 /* footer.scss #################### */
+footer {
+  font-family: "Quicksand", sans-serif;
+  font-size: 16px; }
+
+footer p {
+  padding: 1em 0; }
+
 .top-footer {
-  min-height: 10em;
+  min-height: 8em;
   background: #2c4770;
   color: white;
-  overflow: auto; }
+  overflow: auto;
+  border-top: 6px solid #1c2c46; }
 
 .bottom-footer {
   color: white; }

@@ -16,4 +16,4 @@ exclude: ["sass", "node_modules", "Gruntfile.js", "README.md", "package.json"]
 # Build settings
 markdown: rdiscount
 permalink: pretty
-highlighter: pygments
+highlighter: pygments 

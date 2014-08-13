@@ -19,10 +19,6 @@ module.exports = function(grunt) {
 			}
 		},
 		shell: {
-			/* jekyll: {
-				command: 'rm -rf _site/*; jekyll',
-				stdout: true
-			}, */
 			jekyllBuild: {
 				command: 'jekyll build'
 			}
@@ -59,7 +55,10 @@ module.exports = function(grunt) {
 					'_includes/**'
 		          ],
 		        tasks: ['shell:jekyllBuild'],
-		      }
+		        options: {
+		        	livereload: true
+		        }
+		      },
 		},
 		open: {
 			all: {
