@@ -1,0 +1,13 @@
+# Site settings
+title: n8g with jekyll
+email: nate@nategeslin.com
+description: "Jekyll sandbox.  Lets play with Jekyll!"
+baseurl: ""
+url: "http://localhost:4000"
+twitter_username: n8rzz
+github_username:  n8rzz
+
+# Build settings
+markdown: rdiscount
+permalink: pretty
+pygments: true
