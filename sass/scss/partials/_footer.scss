@@ -10,11 +10,10 @@ footer p {
 
 .primary-footer {
 	min-height: 8em;
-	padding-top: 1em;
 	background: $slight-light-blue;
+	color: #fff;
 	font-family: $oxygen;
 	overflow: auto;
-	border-top: 9px solid $dark-blue;
 	a,
 	a:visited {
 		padding-top: 1em;

@@ -4,8 +4,8 @@
 	background: $dark-blue;
 	color: $light-light-blue;
 	@include box-shadow(0, 0, 11px, 0px, #333);
-}
-.primary-header h1 {
-	color: $basic-green;
+ 	h1 {
+		color: $basic-green;
+	}
 }
 /* /header.scss #################### */

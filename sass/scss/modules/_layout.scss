@@ -23,7 +23,7 @@ h4 {font-size: $h4-size;}
 h5 {font-size: $h5-size;}
 h6 {font-size: $h6-size;}
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
-	font-size: 45%;
+	font-size: $h-small;
 }
 
 a {}
@@ -35,7 +35,8 @@ article {
 	h4 { margin-top: 1em;}
 	small {
 		font-family: $ubuntu;
-//		font-size: 25%;
+		font-size: 40%;
+		letter-spacing: -1px;
 	}
 	img {
 		margin: 0.5em 1em;

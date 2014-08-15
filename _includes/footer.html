@@ -1,9 +1,18 @@
 <footer class="container-fluid primary-footer text-center">
 
   <div class="row">
+    <div class="col-sm-6">
+		<p>subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+    </div><!-- /.col-md-6 -->
+	<div class="col-sm-6">
+		<p><a href="#">col-left</a></p>
+	</div><!-- /.col-md-6 --> 
+  </div><!-- /.row -->
+
+  <div class="row">
     <div class="col-md-12">
-		<a href="mailto:{{ site.email }}">{{ site.email }}</a>
-    </div><!-- /.top-footer -->
+		<p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    </div><!-- /.col-md-12 -->
   </div><!-- /.row -->
 
 </footer>

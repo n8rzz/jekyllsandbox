@@ -66,7 +66,9 @@ article {
   article h4 {
     margin-top: 1em; }
   article small {
-    font-family: "Ubuntu", sans-serif; }
+    font-family: "Ubuntu", sans-serif;
+    font-size: 40%;
+    letter-spacing: -1px; }
   article img {
     margin: 0.5em 1em; }
 
@@ -146,12 +148,17 @@ ul.pager {
   -webkit-box-shadow: 0 0 11px 0px #333333;
   -moz-box-shadow: 0 0 11px 0px #333333;
   box-shadow: 0 0 11px 0px #333333; }
-
-.primary-header h1 {
-  color: #79b694; }
+  .primary-header h1 {
+    color: #79b694; }
 
 /* /header.scss #################### */
 /* content.scss #################### */
+.body-content {
+  border-bottom: 9px solid #1c2c46;
+  -webkit-box-shadow: 0 0 11px 0px #333333;
+  -moz-box-shadow: 0 0 11px 0px #333333;
+  box-shadow: 0 0 11px 0px #333333; }
+
 .blog-author-meta {
   padding-top: 1em;
   padding-bottom: 3em;
@@ -237,11 +244,10 @@ footer p {
 
 .primary-footer {
   min-height: 8em;
-  padding-top: 1em;
   background: #2c4770;
+  color: #fff;
   font-family: "Oxygen", sans-serif;
-  overflow: auto;
-  border-top: 9px solid #1c2c46; }
+  overflow: auto; }
   .primary-footer a,
   .primary-footer a:visited {
     padding-top: 1em;
