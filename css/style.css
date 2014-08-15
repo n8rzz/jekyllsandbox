@@ -20,6 +20,7 @@ Tags: HTML5, Bootstrap, bare, simple, blog
 /*-- fonts --*/
 /* /variables #################### */
 /* mixins.scss #################### */
+/* https://gist.github.com/garyharan/957284 */
 /* /mixins.scss #################### */
 /* layout.scss #################### */
 body {
@@ -59,7 +60,7 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-size: 45%; }
 
 article {
-  margin-top: 2em;
+  margin-top: 0.25em;
   padding: 0.5em 0em 2em 1em; }
   article h3,
   article h4 {
@@ -84,8 +85,8 @@ hr {
   border: none;
   border-radius: 0; }
 
-.navbar-brand {
-  color: #4c976d !important; }
+.navbar-header .navbar-brand {
+  color: #79b694 !important; }
 
 .navbar-default {
   background: #2c4770;
@@ -141,7 +142,10 @@ ul.pager {
 .primary-header {
   min-height: 250px;
   background: #1c2c46;
-  color: #7689a9; }
+  color: #7689a9;
+  -webkit-box-shadow: 0 0 11px 0px #333333;
+  -moz-box-shadow: 0 0 11px 0px #333333;
+  box-shadow: 0 0 11px 0px #333333; }
 
 .primary-header h1 {
   color: #79b694; }

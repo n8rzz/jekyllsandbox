@@ -1,0 +1,16 @@
+<!-- Pagination -->
+<ul class="pager">
+  
+  {% if page.previous %}
+    <li class="previous"><a href="{{ page.previous.url }}" rel="prev">&larr; {{ page.previous.title }}</a></li>
+  {% else %}
+  	<li class="previous disabled"><a href="#"><small>no older posts</small></a></li>
+  {% endif %}
+  
+  {% if page.next %}
+    <li class="next"><a href="{{ page.next.url }}" rel="next">{{ page.next.title }} &rarr;</a></li>
+  {% else %}
+  	<li class="next disabled"><a href="#"><small>no newer posts</small></a></li>
+  {% endif %}
+
+</ul>

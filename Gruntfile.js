@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 		express: {
 			all: {
 				options: {
-					port: 9000,
+					port: 4001,
 					hostname: "0.0.0.0",
 					bases: ['_site'],
 					livereload: true,
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
 					'_posts/**',
 					'_includes/**'
 		          ],
-		        tasks: ['shell:jekyllBuild'],
+		        //tasks: ['shell:jekyllBuild'],
 		        options: {
 		        	livereload: true
 		        }

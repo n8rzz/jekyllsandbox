@@ -9,10 +9,12 @@
 
 .navbar-default {}
 
-.navbar-header {}
-.navbar-brand {
-	color: $medium-green !important;
+.navbar-header {
+	.navbar-brand {
+		color: $basic-green !important;
+	}
 }
+
 
 .nabbar-toggle {}
 
