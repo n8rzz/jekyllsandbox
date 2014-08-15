@@ -33,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold; }
 
 h1 {
-  font-size: 64px; }
+  font-size: 60px; }
   h1 small {
     padding-top: .25em;
     display: block;
@@ -42,26 +42,26 @@ h1 {
     color: #4c976d; }
 
 h2 {
-  font-size: 57px; }
+  font-size: 53px; }
 
 h3 {
-  font-size: 51px; }
+  font-size: 48px; }
 
 h4 {
-  font-size: 44px; }
-
-h5 {
   font-size: 40px; }
 
+h5 {
+  font-size: 36px; }
+
 h6 {
-  font-size: 30px; }
+  font-size: 28px; }
 
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
   font-size: 45%; }
 
 article {
   margin-top: 0.25em;
-  padding: 0.5em 0em 2em 1em; }
+  padding: 0.5em 0em 0.25em 1em; }
   article h3,
   article h4 {
     margin-top: 1em; }
@@ -71,10 +71,10 @@ article {
     margin: 0.5em 1em; }
 
 hr {
-  width: 75%;
-  margin-top: 3em;
-  margin-bottom: 2em;
-  border-top: 1px dashed #aaa; }
+  width: 85%;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  border-top: 1px solid #f9f9f9; }
 
 /* /layout.scss #################### */
 /* Partials - Elements */
@@ -235,16 +235,21 @@ footer {
 footer p {
   padding: 1em 0; }
 
-.top-footer {
+.primary-footer {
   min-height: 8em;
+  padding-top: 1em;
   background: #2c4770;
-  color: white;
+  font-family: "Oxygen", sans-serif;
   overflow: auto;
-  border-top: 7px solid #1c2c46; }
-
-.bottom-footer {
-  color: white; }
-  .bottom-footer p {
-    padding: 0; }
+  border-top: 9px solid #1c2c46; }
+  .primary-footer a,
+  .primary-footer a:visited {
+    padding-top: 1em;
+    color: #79b694; }
+    .primary-footer a:hover, .primary-footer a:active,
+    .primary-footer a:visited:hover,
+    .primary-footer a:visited:active {
+      color: #4c976d;
+      text-decoration: none; }
 
 /* /footer.scss #################### */

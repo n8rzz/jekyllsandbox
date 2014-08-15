@@ -8,17 +8,22 @@ footer p {
 	padding: 1em 0;
 }
 
-.top-footer {
+.primary-footer {
 	min-height: 8em;
+	padding-top: 1em;
 	background: $slight-light-blue;
-	color: $footer-txt-color;
+	font-family: $oxygen;
 	overflow: auto;
-	border-top: 7px solid $dark-blue;
-}
-.bottom-footer {
-	color: $footer-txt-color;	
-	p {
-		padding: 0;
+	border-top: 9px solid $dark-blue;
+	a,
+	a:visited {
+		padding-top: 1em;
+		color: $basic-green;
+		&:hover,
+		&:active {
+			color: $medium-green;
+			text-decoration: none;
+		}
 	}
 }
 /* /footer.scss #################### */

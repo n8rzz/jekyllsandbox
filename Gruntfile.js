@@ -11,16 +11,24 @@ module.exports = function(grunt) {
 		express: {
 			all: {
 				options: {
-					port: 4001,
+					port: 9000,
 					hostname: "0.0.0.0",
 					bases: ['_site'],
 					livereload: true,
 				}
 			}
 		},
+		clean: {
+			jekyll: {
+				src: [ '_site/**' ]
+			}
+		},
 		shell: {
 			jekyllBuild: {
 				command: 'jekyll build'
+			},
+			jekyllServer: {
+				command: 'jekyll server'
 			}
 		},
 		sass: {
@@ -30,18 +38,18 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		copy: {
-			sass: {
-				files: [{
-					cwd: 'css/style.css',
-					dest: '_site/css/'
-				}]
-			}
-		},
+//		copy: {
+//			sass: {
+//				files: [{
+//					cwd: 'css/style.css',
+//					dest: '_site/css/'
+//				}]
+//			}
+//		},
 		watch: {
 			css: {
 				files: ['sass/**/*scss'],
-				tasks: ['sass:jekyll', 'copy:sass'],
+				tasks: ['sass:jekyll', 'shell:jekyllBuild'],
 				options: {
 					livereload: true
 				}
@@ -54,7 +62,9 @@ module.exports = function(grunt) {
 					'_posts/**',
 					'_includes/**'
 		          ],
-		        //tasks: ['shell:jekyllBuild'],
+		        tasks: [
+		        	'shell:jekyllBuild',
+		        ],
 		        options: {
 		        	livereload: true
 		        }
