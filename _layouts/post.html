@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div class="container jumbotron primary-header text-center">  
+<div class="container-fluid jumbotron primary-header text-center">  
   <div class="row">
     <h1>{{ page.title }}
     <small>{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</small>
@@ -19,8 +19,6 @@ layout: default
     	</article>
     </div><!-- /.col-md-12 -->    
   </div><!-- /.row -->
+</div><!-- /.container-fluid -->
 
-  <div class="row">
-    {% include pagination.html %}
-  </div>
-</div><!-- /.container -->
+{% include pagination.html %}

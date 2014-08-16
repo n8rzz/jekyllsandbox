@@ -1,0 +1,34 @@
+ul.pagination {
+	li {
+		.current {
+			background-color: $slight-light-blue;
+			color: $light-light-blue;
+		}
+	}
+}
+ul.pager {
+	font-size: 14px;
+}
+.ng-frame-pager {
+	padding-top: 1em;
+	padding-bottom: 1.75em;
+	.col-sm-5 {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	a {
+		width: 100%;
+		height: 100%;
+		padding: 0.75em;
+		display: block;
+		background: $light-light-grey;
+		font-family: $nav-font;
+		&:hover,
+		&:focus,
+		&:active {
+			color: $basic-green;
+			text-decoration: none;
+			background-color: $slight-light-blue;
+		}
+	}
+}
