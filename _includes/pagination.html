@@ -1,21 +1,20 @@
 <!-- Pagination -->
-<div class="container-fluid">
-  <div class="row ng-frame-pager text-center">
-  
-  {% if page.previous %}
-    <div class="col-xs-6 col-sm-5"><a href="{{ page.previous.url }}" rel="prev">&larr; {{ page.previous.title }}</a></div>
-  
-  {% else %}
-    <div class="col-xs-6 col-sm-5"><a href="#" rel="prev"><i>no older posts</i></a></div>
-  
-  {% endif %}
-  
-  {% if page.next %}
-    <div class="col-xs-6 col-sm-5 col-sm-offset-2"><a href="{{ page.next.url }}" rel="prev">{{ page.next.title }} &rarr;</a></div>
-  
-  {% else %}
-    <div class="col-xs-6 col-sm-5 col-sm-offset-2"><a href="#" rel="prev"><i>no newer posts</i></a></div>
-  {% endif %}
 
-  </div><!-- /.row -->
-</div><!-- /.container-fluid -->
+<div class="row ng-frame-pager text-center">
+
+{% if page.previous %}
+  <div class="col-xs-6 col-sm-5"><a href="{{ page.previous.url }}" rel="prev">&larr; {{ page.previous.title }}</a></div>
+
+{% else %}
+  <div class="col-xs-6 col-sm-5"><a href="#" rel="prev"><i>no older posts</i></a></div>
+
+{% endif %}
+
+{% if page.next %}
+  <div class="col-xs-6 col-sm-5 col-sm-offset-2"><a href="{{ page.next.url }}" rel="prev">{{ page.next.title }} &rarr;</a></div>
+
+{% else %}
+  <div class="col-xs-6 col-sm-5 col-sm-offset-2"><a href="#" rel="prev"><i>no newer posts</i></a></div>
+{% endif %}
+
+</div><!-- /.row -->

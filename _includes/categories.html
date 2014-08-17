@@ -1,0 +1,37 @@
+<div class="row post-meta text-center">
+	
+	<div class="col-sm-5">
+		<!-- Categories -->
+      	{% unless page.categories == empty %}
+		<ul class="post-meta-category">
+				
+			{% assign categories_list = page.categories %}
+		    
+		    {% if categories_list.first[0] == null %}
+		    
+		    {% for category in categories_list %}
+		      <button type="button" class="btn btn-default btn-md" data-size="{{ site.categories[category].size }}">
+			  <span class="glyphicon glyphicon-folder-open"></span>
+			      <a href="/categories/#{{ category }}">
+			        {{ category | join: "/" }}
+			      </a>
+		      </button>
+		    {% endfor %}
+		  {% else %}
+		    {% for category in categories_list %} 
+		      <button type="button" class="btn btn-default btn-md" data-size="{{ category[1].size }}">
+			  <span class="glyphicon glyphicon-folder-open"></span>
+			      <a href="/categories/#{{ category[0] }}">
+			        {{ category[0] | join: "/" }}
+			      </a>
+		      </button>
+
+		    {% endfor %}
+		  {% endif %}
+		    {% assign categories_list = nil %}
+
+		</ul>
+		{% endunless %} 		
+	</div><!-- /.col-sm-5 -->
+
+</div><!-- /.row .post-meta -->

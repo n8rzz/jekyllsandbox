@@ -4,9 +4,8 @@ title: quick change
 date: 2014-08-13 00:23:00
 categories:
 - jekyll
-tags:
-- webdesign
-- framework
+- web
+
 ---
 
 Wow!  Im am thuroughly impressed with Jekyll and how easy it is to put together.  It's incredible!  I come from a Wordpress background.  I've been toying around with Wordpress for the last 6 or seven years and, like most people, was my go to CMS for putting together a website.  
