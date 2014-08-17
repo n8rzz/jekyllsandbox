@@ -280,11 +280,12 @@ footer p {
 
 .primary-footer {
   min-height: 8em;
-  background: #2c4770;
+  background: #1c2c46;
   color: #fff;
   font-family: "Oxygen", sans-serif;
   overflow: auto;
-  border-top: 9px solid #1c2c46; }
+  border-top: 9px solid #79b694;
+  border-bottom: 13px solid #2c4770; }
   .primary-footer a,
   .primary-footer a:visited {
     padding-top: 1em;
