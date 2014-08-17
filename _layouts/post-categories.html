@@ -14,17 +14,9 @@ layout: default
     <div class="col-md-12">
     	<article class="text-left">
     		
-    			{{ content }}
+    			{% include article-categories.html %}
     		 
     	</article>
     </div><!-- /.col-md-12 -->    
   </div><!-- /.row -->
 </div><!-- /.container-fluid -->
-
-<div class="container-fluid">
-
-  {% include pagination.html %}
-
-  {% include post-meta-categories.html %}
-
-</div><!-- /.container-fluid -->  
