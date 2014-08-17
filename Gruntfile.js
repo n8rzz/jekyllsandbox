@@ -18,17 +18,20 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		clean: {
-			jekyll: {
-				src: [ '_site/**' ]
-			}
-		},
 		shell: {
 			jekyllBuild: {
 				command: 'jekyll build'
 			},
 			jekyllServer: {
 				command: 'jekyll server'
+			}
+		},
+		clean: {
+			css: {
+				src: [ 'css/*.css', '!css/style.min.css' ]
+			},
+			deploy: {
+				src: [ '_deploy' ]
 			}
 		},
 		sass: {
@@ -38,18 +41,33 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-//		copy: {
-//			sass: {
-//				files: [{
-//					cwd: 'css/style.css',
-//					dest: '_site/css/'
-//				}]
-//			}
-//		},
+		cssmin: {
+			minify: {
+				expand: true,
+				cwd: 'css/',
+				src: ['*.css', '!*.min.css'],
+				dest: 'css/',
+				ext: '.min.css'
+			}
+		}, /*
+		copy: {
+			deploy: {
+				files: {	
+					expand: true,
+					src: ['_site/*'],
+					dest: '_deploy/*'
+				}
+			}
+		}, */
 		watch: {
 			css: {
 				files: ['sass/**/*scss'],
-				tasks: ['sass:jekyll', 'shell:jekyllBuild'],
+				tasks: [
+					'sass:jekyll',
+					'cssmin',
+					'clean:css',
+					'shell:jekyllBuild',
+				],
 				options: {
 					livereload: true
 				}
@@ -74,7 +92,7 @@ module.exports = function(grunt) {
 			all: {
 				path: 'http://localhost:<%= express.all.options.port%>/index.html'
 			}
-		},
+		}
 	});
 
 	grunt.registerTask('default', [ 'watch' ]);
@@ -86,7 +104,16 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('build', [
+		'sass:jekyll',
+		'cssmin',
+		'clean:css',
 		'shell:jekyllBuild',
 	]);
 
+/*
+	grunt.registerTask('deploy', [
+		'clean:deploy',
+		'copy:deploy'
+	]);
+*/
 }

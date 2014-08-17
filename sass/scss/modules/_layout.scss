@@ -16,9 +16,8 @@ h1 {
 		font-family: $ubuntu;
 		font-size: 18px;
 		color: $medium-green;
-	}
-}
-h2 {font-size: $h2-size;}
+	} 
+} h2 {font-size: $h2-size;}
 h3 {font-size: $h3-size;}
 h4 {font-size: $h4-size;}
 h5 {font-size: $h5-size;}
@@ -30,7 +29,7 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
 a {}
 
 article {
-	margin-top: 0.25em; 
+	margin-top: 2.5em; 
 	padding: 0.5em 0em 0.25em 1em;
 	h3,
 	h4 { margin-top: 1em;}
