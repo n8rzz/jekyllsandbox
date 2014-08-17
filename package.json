@@ -2,7 +2,7 @@
   "name": "jekyllsandbox",
   "version": "0.1.0",
   "description": "n8g with jekyll",
-  "author": "n8rzz",
+  "author": "nate geslin",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,6 +12,7 @@
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-cssmin": "^0.10.0",
     "grunt-contrib-sass": "^0.7.4",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-express": "^1.4.1",
