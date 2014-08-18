@@ -4,6 +4,9 @@ title: "Grunt with Jekyll"
 date: "2014-08-17 02:07:00"
 categories:
 - grunt
+tags:
+- grunt
+- jekyll
 
 ---
 

@@ -4,6 +4,9 @@ title: Quick Change
 date: 2014-08-13 00:23:00
 categories:
 - jekyll
+tags:
+- jekyll
+- wordpress
 
 ---
 
