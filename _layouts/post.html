@@ -15,16 +15,22 @@ layout: default
     	<article class="text-left">
     		
     			{{ content }}
-    		 
+    		
     	</article>
     </div><!-- /.col-md-12 -->    
   </div><!-- /.row -->
 </div><!-- /.container-fluid -->
 
 <div class="container-fluid">
+  <div class="row post-meta text-center">
+
+    {% include post-meta-categories.html %}
+    {% include post-meta-tags.html %}
+
+  </div><!-- /.row .post-meta -->
+    
 
   {% include pagination.html %}
 
-  {% include post-meta-categories.html %}
 
 </div><!-- /.container-fluid -->  

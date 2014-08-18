@@ -1,37 +1,43 @@
-<div class="row post-meta text-center">
-	
-	<div class="col-sm-5">
-		<!-- Categories -->
-      	{% unless page.categories == empty %}
-		<ul class="post-meta-category">
-				
-			{% assign categories_list = page.categories %}
-		    
-		    {% if categories_list.first[0] == null %}
-		    
-		    {% for category in categories_list %}
+<div class="col-sm-5">
+	<!-- Categories -->
+  	{% unless page.categories == empty %}
+	<ul class="post-meta-category">
+		<li>
+			<span class="glyphicon glyphicon-folder-open"></span>
+			<a href="#">Category:</a>
+		</li>
+
+		{% assign categories_list = page.categories %}
+	    {% if categories_list.first[0] == null %}
+	    {% for category in categories_list %}
+	    
+	      <li>
 		      <button type="button" class="btn btn-default btn-md" data-size="{{ site.categories[category].size }}">
-			  <span class="glyphicon glyphicon-folder-open"></span>
+			      <span class="glyphicon glyphicon glyphicon-file"></span>
 			      <a href="/categories/#{{ category }}">
 			        {{ category | join: "/" }}
 			      </a>
 		      </button>
-		    {% endfor %}
-		  {% else %}
-		    {% for category in categories_list %} 
-		      <button type="button" class="btn btn-default btn-md" data-size="{{ category[1].size }}">
-			  <span class="glyphicon glyphicon-folder-open"></span>
-			      <a href="/categories/#{{ category[0] }}">
-			        {{ category[0] | join: "/" }}
-			      </a>
-		      </button>
+	      </li>
+	    
+	    {% endfor %}
+	  {% else %}
+	    {% for category in categories_list %} 
+	      
+	      <li>
+	      <button type="button" class="btn btn-default btn-md" data-size="{{ category[1].size }}">
+		  <span class="glyphicon glyphicon glyphicon-file"></span>
+		      <a href="/categories/#{{ category[0] }}">
+		        {{ category[0] | join: "/" }}
+		      </a>
+	      </button>
+	      </li>
 
-		    {% endfor %}
-		  {% endif %}
-		    {% assign categories_list = nil %}
+	    {% endfor %}
+	  {% endif %}
+	    {% assign categories_list = nil %}
 
-		</ul>
-		{% endunless %} 		
-	</div><!-- /.col-sm-5 -->
+	</ul>
+	{% endunless %} 		
+</div><!-- /.col-sm-5 -->
 
-</div><!-- /.row .post-meta -->
