@@ -1,0 +1,8 @@
+Did you know you can close a GitHub issue with a commit message?  I didn't know that either, until recently.  It's turned out to be a pretty handy feature. 
+
+{% highlight shell %}
+
+git commit -m 'closes #13'
+
+{% endhighlight %}
+
