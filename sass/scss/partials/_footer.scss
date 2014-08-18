@@ -4,7 +4,8 @@ footer {
 	font-size: $sm-txt;
 }
 
-footer p {
+footer p,
+.social-links {
 	padding: 1em 0;
 }
 
@@ -26,5 +27,17 @@ footer p {
 			text-decoration: none;
 		}
 	}
+}
+
+.social-links {
+	list-style-type: none;
+	li {
+		display: inline-block;
+	}
+}
+
+.footer-copy {
+	font-family: $quicksand;
+	font-size: $xsm-txt;
 }
 /* /footer.scss #################### */
