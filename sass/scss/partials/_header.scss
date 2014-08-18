@@ -3,7 +3,7 @@
 	min-height: 250px;
 	background: $dark-blue;
 	color: $light-light-blue;
-	@include box-shadow(0, 0, 11px, 0px, #333);
+	//@include box-shadow(0, 0, 11px, 0px, #333);
  	h1 {
 		color: $basic-green;
 	}
