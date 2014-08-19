@@ -93,6 +93,8 @@ set to the default grunt task, so either command does the same thing: compiles S
 Starts an express server allowing for livereload.  It also executes the <code>grunt watch</code> command when any important file changes.  So it does everything above plus running the server on port 9000.</p></li>
 <li><p><code>grunt build</code>
 Same as <code>grunt watch</code> for now.  Will be extending this one in the future.</p></li>
+<li><p><code>grunt deploy</code>
+Still working on this one.  Eventually will get everything ready to deploy to production and mabe even push to production server.  Currently a work in progress, though.</p></li>
 </ul>
 
 
@@ -122,6 +124,9 @@ Same as <code>grunt watch</code> for now.  Will be extending this one in the fut
             <span class="p">},</span>
             <span class="nx">jekyllServer</span><span class="o">:</span> <span class="p">{</span>
                 <span class="nx">command</span><span class="o">:</span> <span class="s1">&#39;jekyll server&#39;</span>
+            <span class="p">},</span>
+            <span class="nx">jekyllDeploy</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">command</span><span class="o">:</span> <span class="s1">&#39;cp -a _site/. _deploy/&#39;</span>
             <span class="p">}</span>
         <span class="p">},</span>
         <span class="nx">clean</span><span class="o">:</span> <span class="p">{</span>
@@ -147,7 +152,16 @@ Same as <code>grunt watch</code> for now.  Will be extending this one in the fut
                 <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;css/&#39;</span><span class="p">,</span>
                 <span class="nx">ext</span><span class="o">:</span> <span class="s1">&#39;.min.css&#39;</span>
             <span class="p">}</span>
-        <span class="p">},</span>
+        <span class="p">},</span> <span class="cm">/*</span>
+<span class="cm">       copy: {</span>
+<span class="cm">           deploy: {</span>
+<span class="cm">               files: {    </span>
+<span class="cm">                   expand: true,</span>
+<span class="cm">                   src: [&#39;_site/*&#39;],</span>
+<span class="cm">                   dest: &#39;_deploy/*&#39;</span>
+<span class="cm">               }</span>
+<span class="cm">           }</span>
+<span class="cm">       }, */</span>
         <span class="nx">watch</span><span class="o">:</span> <span class="p">{</span>
             <span class="nx">css</span><span class="o">:</span> <span class="p">{</span>
                 <span class="nx">files</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;sass/**/*scss&#39;</span><span class="p">],</span>
@@ -181,7 +195,18 @@ Same as <code>grunt watch</code> for now.  Will be extending this one in the fut
             <span class="nx">all</span><span class="o">:</span> <span class="p">{</span>
                 <span class="nx">path</span><span class="o">:</span> <span class="s1">&#39;http://localhost:&lt;%= express.all.options.port%&gt;/index.html&#39;</span>
             <span class="p">}</span>
-        <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">sync</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">deploy</span><span class="o">:</span> <span class="p">{</span>
+                <span class="nx">files</span><span class="o">:</span> <span class="p">[{</span>
+                    <span class="nx">cwd</span><span class="o">:</span> <span class="s1">&#39;_site&#39;</span><span class="p">,</span>
+                    <span class="nx">src</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;**&#39;</span> <span class="p">],</span>
+                    <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;_deploy&#39;</span><span class="p">,</span>
+                <span class="p">}],</span>
+                <span class="nx">verbose</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">changelog</span><span class="o">:</span> <span class="p">{}</span>
     <span class="p">});</span>
 
     <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="p">[</span> <span class="s1">&#39;watch&#39;</span> <span class="p">]);</span>
@@ -196,8 +221,16 @@ Same as <code>grunt watch</code> for now.  Will be extending this one in the fut
         <span class="s1">&#39;sass:jekyll&#39;</span><span class="p">,</span>
         <span class="s1">&#39;cssmin&#39;</span><span class="p">,</span>
         <span class="s1">&#39;clean:css&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;shell:jekyllBuild&#39;</span><span class="p">,</span>
-    <span class="p">]);</span></code></pre></div>
+        <span class="s1">&#39;shell:jekyllBuild&#39;</span>
+    <span class="p">]);</span>
+
+    <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;deploy&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s1">&#39;sync:deploy&#39;</span><span class="p">,</span>
+        <span class="c1">//&#39;clean:deploy&#39;,</span>
+        <span class="c1">//&#39;shell:jekyllDeploy&#39;,</span>
+        <span class="s1">&#39;changelog&#39;</span>
+    <span class="p">]);</span>
+<span class="p">}</span></code></pre></div>
 
 
 <p>Below is the <a href="https://github.com/n8rzz/jekyllsandbox/blob/master/package.json">package.json</a> file:</p>
@@ -219,9 +252,11 @@ Same as <code>grunt watch</code> for now.  Will be extending this one in the fut
     <span class="nt">&quot;grunt-contrib-cssmin&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.10.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;grunt-contrib-sass&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.7.4&quot;</span><span class="p">,</span>
     <span class="nt">&quot;grunt-contrib-watch&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.6.1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;grunt-conventional-changelog&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.1.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;grunt-express&quot;</span><span class="p">:</span> <span class="s2">&quot;^1.4.1&quot;</span><span class="p">,</span>
     <span class="nt">&quot;grunt-open&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.2.3&quot;</span><span class="p">,</span>
     <span class="nt">&quot;grunt-shell&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.7.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;grunt-sync&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.8&quot;</span><span class="p">,</span>
     <span class="nt">&quot;matchdep&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.3.0&quot;</span><span class="p">,</span>
     <span class="nt">&quot;time-grunt&quot;</span><span class="p">:</span> <span class="s2">&quot;^0.4.0&quot;</span>
   <span class="p">}</span>

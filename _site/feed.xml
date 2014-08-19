@@ -5,8 +5,8 @@
     <description>Jekyll sandbox.  Lets play with Jekyll!</description>
     <link>http://localhost:9000/</link>
     <atom:link href="http://localhost:9000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 19 Aug 2014 11:21:40 -0500</pubDate>
-    <lastBuildDate>Tue, 19 Aug 2014 11:21:40 -0500</lastBuildDate>
+    <pubDate>Tue, 19 Aug 2014 18:33:44 -0500</pubDate>
+    <lastBuildDate>Tue, 19 Aug 2014 18:33:44 -0500</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
@@ -261,6 +261,8 @@ set to the default grunt task, so either command does the same thing: compiles S
 Starts an express server allowing for livereload.  It also executes the &lt;code&gt;grunt watch&lt;/code&gt; command when any important file changes.  So it does everything above plus running the server on port 9000.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;grunt build&lt;/code&gt;
 Same as &lt;code&gt;grunt watch&lt;/code&gt; for now.  Will be extending this one in the future.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;grunt deploy&lt;/code&gt;
+Still working on this one.  Eventually will get everything ready to deploy to production and mabe even push to production server.  Currently a work in progress, though.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -290,6 +292,9 @@ Same as &lt;code&gt;grunt watch&lt;/code&gt; for now.  Will be extending this on
             &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
             &lt;span class=&quot;nx&quot;&gt;jekyllServer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
                 &lt;span class=&quot;nx&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;jekyll server&amp;#39;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;jekyllDeploy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;cp -a _site/. _deploy/&amp;#39;&lt;/span&gt;
             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
         &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
         &lt;span class=&quot;nx&quot;&gt;clean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -315,7 +320,16 @@ Same as &lt;code&gt;grunt watch&lt;/code&gt; for now.  Will be extending this on
                 &lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;css/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;nx&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;.min.css&amp;#39;&lt;/span&gt;
             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;cm&quot;&gt;/*&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;       copy: {&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;           deploy: {&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;               files: {    &lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;                   expand: true,&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;                   src: [&amp;#39;_site/*&amp;#39;],&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;                   dest: &amp;#39;_deploy/*&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;               }&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;           }&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;       }, */&lt;/span&gt;
         &lt;span class=&quot;nx&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
             &lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
                 &lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;sass/**/*scss&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
@@ -349,7 +363,18 @@ Same as &lt;code&gt;grunt watch&lt;/code&gt; for now.  Will be extending this on
             &lt;span class=&quot;nx&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
                 &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://localhost:&amp;lt;%= express.all.options.port%&amp;gt;/index.html&amp;#39;&lt;/span&gt;
             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;sync&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;deploy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;cwd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;_site&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;**&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;_deploy&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}],&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;verbose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;changelog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 
     &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;watch&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
@@ -364,8 +389,16 @@ Same as &lt;code&gt;grunt watch&lt;/code&gt; for now.  Will be extending this on
         &lt;span class=&quot;s1&quot;&gt;&amp;#39;sass:jekyll&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
         &lt;span class=&quot;s1&quot;&gt;&amp;#39;cssmin&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
         &lt;span class=&quot;s1&quot;&gt;&amp;#39;clean:css&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s1&quot;&gt;&amp;#39;shell:jekyllBuild&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;shell:jekyllBuild&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;deploy&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;sync:deploy&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//&amp;#39;clean:deploy&amp;#39;,&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;//&amp;#39;shell:jekyllDeploy&amp;#39;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;changelog&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Below is the &lt;a href=&quot;https://github.com/n8rzz/jekyllsandbox/blob/master/package.json&quot;&gt;package.json&lt;/a&gt; file:&lt;/p&gt;
@@ -387,9 +420,11 @@ Same as &lt;code&gt;grunt watch&lt;/code&gt; for now.  Will be extending this on
     &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-contrib-cssmin&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.10.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-contrib-sass&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.7.4&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-contrib-watch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.6.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-conventional-changelog&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^1.1.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-express&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^1.4.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-open&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.2.3&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-shell&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.7.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-sync&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.0.8&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;quot;matchdep&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.3.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;quot;time-grunt&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.4.0&amp;quot;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;

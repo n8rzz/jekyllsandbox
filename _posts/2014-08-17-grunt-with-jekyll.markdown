@@ -24,7 +24,8 @@ Starts an express server allowing for livereload.  It also executes the `grunt w
 - `grunt build`
 Same as `grunt watch` for now.  Will be extending this one in the future.
 
-
+- `grunt deploy`
+Still working on this one.  Eventually will get everything ready to deploy to production and mabe even push to production server.  Currently a work in progress, though.
 
 {% highlight javascript %}
 'use strict';
@@ -53,6 +54,9 @@ module.exports = function(grunt) {
 			},
 			jekyllServer: {
 				command: 'jekyll server'
+			},
+			jekyllDeploy: {
+				command: 'cp -a _site/. _deploy/'
 			}
 		},
 		clean: {
@@ -78,7 +82,16 @@ module.exports = function(grunt) {
 				dest: 'css/',
 				ext: '.min.css'
 			}
-		},
+		}, /*
+		copy: {
+			deploy: {
+				files: {	
+					expand: true,
+					src: ['_site/*'],
+					dest: '_deploy/*'
+				}
+			}
+		}, */
 		watch: {
 			css: {
 				files: ['sass/**/*scss'],
@@ -112,7 +125,18 @@ module.exports = function(grunt) {
 			all: {
 				path: 'http://localhost:<%= express.all.options.port%>/index.html'
 			}
-		}
+		},
+		sync: {
+			deploy: {
+				files: [{
+					cwd: '_site',
+					src: [ '**' ],
+					dest: '_deploy',
+				}],
+				verbose: true
+			}
+		},
+		changelog: {}
 	});
 
 	grunt.registerTask('default', [ 'watch' ]);
@@ -127,8 +151,16 @@ module.exports = function(grunt) {
 		'sass:jekyll',
 		'cssmin',
 		'clean:css',
-		'shell:jekyllBuild',
+		'shell:jekyllBuild'
 	]);
+
+	grunt.registerTask('deploy', [
+		'sync:deploy',
+		//'clean:deploy',
+		//'shell:jekyllDeploy',
+		'changelog'
+	]);
+}
 {% endhighlight %}
 
 Below is the [package.json][package] file:
@@ -151,13 +183,16 @@ Below is the [package.json][package] file:
     "grunt-contrib-cssmin": "^0.10.0",
     "grunt-contrib-sass": "^0.7.4",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-conventional-changelog": "^1.1.0",
     "grunt-express": "^1.4.1",
     "grunt-open": "^0.2.3",
     "grunt-shell": "^0.7.0",
+    "grunt-sync": "0.0.8",
     "matchdep": "^0.3.0",
     "time-grunt": "^0.4.0"
   }
 }
+
 
 {% endhighlight %}
 

@@ -95,7 +95,18 @@ module.exports = function(grunt) {
 			all: {
 				path: 'http://localhost:<%= express.all.options.port%>/index.html'
 			}
-		}
+		},
+		sync: {
+			deploy: {
+				files: [{
+					cwd: '_site',
+					src: [ '**' ],
+					dest: '_deploy',
+				}],
+				verbose: true
+			}
+		},
+		changelog: {}
 	});
 
 	grunt.registerTask('default', [ 'watch' ]);
@@ -110,12 +121,15 @@ module.exports = function(grunt) {
 		'sass:jekyll',
 		'cssmin',
 		'clean:css',
-		'shell:jekyllBuild',
+		'shell:jekyllBuild'
 	]);
 
 	grunt.registerTask('deploy', [
-		'clean:deploy',
-		'shell:jekyllDeploy'
+		'sync:deploy',
+		//'clean:deploy',
+		//'shell:jekyllDeploy',
 	]);
+
+	grunt.registerTask('version', 'changelog');
 
 }
