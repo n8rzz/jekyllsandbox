@@ -24,6 +24,9 @@ module.exports = function(grunt) {
 			},
 			jekyllServer: {
 				command: 'jekyll server'
+			},
+			jekyllDeploy: {
+				command: 'cp -a _site/. _deploy/'
 			}
 		},
 		clean: {
@@ -110,10 +113,9 @@ module.exports = function(grunt) {
 		'shell:jekyllBuild',
 	]);
 
-/*
 	grunt.registerTask('deploy', [
 		'clean:deploy',
-		'copy:deploy'
+		'shell:jekyllDeploy'
 	]);
-*/
+
 }

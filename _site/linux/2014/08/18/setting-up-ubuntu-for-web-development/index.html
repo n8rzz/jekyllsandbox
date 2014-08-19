@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Setting up Ubunutu for Web Development</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Jekyll sandbox.  Lets play with Jekyll!">
+    <link rel="canonical" href="http://localhost:9000/linux/2014/08/18/setting-up-ubuntu-for-web-development/">
+
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Custom CSS 
+    <link rel="stylesheet" href="/css/main.css">-->
+    <link rel="stylesheet" href="/css/style.min.css">
+
+</head>
+
+
+<body>
+
+<header>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" role="navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://localhost:9000">n8g.com</a>
+        </div><!-- /.navbar-header -->
+
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+        
+    
+      
+      
+        <li><a href="/about/">About</a></li>
+      
+      
+    
+      
+      
+      
+    
+      
+      
+      
+    
+      
+      
+        <li><a href="/categories/">Categories</a></li>
+      
+      
+    
+      
+      
+        <li><a href="/tags/">Tags</a></li>
+      
+      
+    
+        
+        </ul>
+      </div><!-- /.collapse navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav><!-- /.navbar navbar-default -->
+</header>
+
+<div class="container-fluid jumbotron primary-header text-center">  
+  <div class="row">
+    <h1>Setting up Ubunutu for Web Development
+    <small>Aug 18, 2014</small>
+    </h1>
+  </div><!-- /.row -->
+</div><!-- /.jumbotron -->
+
+<div class="container-fluid body-content"> 
+  <div class="row">
+    <div class="col-md-12">
+    	<article class="text-left">
+    		
+    			<p>This article assumes you have already installed Ubuntu, whether it's as a virutal machine or as a stand-alone system, there are a few things that you need to install and setup to get your web development enviroment up and running.  The following procedures are steps I've put together and tested with multiple Ubunutu setups both virtual and standalone.</p>
+
+<hr />
+
+<h3>Prepare the System</h3>
+
+<p>The very first thing you should do immediately after completing the installation process is updating and upgrading your Ubuntu distribution.</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo apt<span class="p">-</span><span class="k">get</span> <span class="k">update</span>
+$ sudo apt<span class="p">-</span><span class="k">get</span> upgrade
+$ sudo apt<span class="p">-</span><span class="k">get</span> dist<span class="p">-</span>upgrade</code></pre></div>
+
+
+<p>This could take a little while.  There are usually a lot of things that need updating after installing Ubunutu.  After you have finished with the updates and upgrades, run the following commands to clean things up:</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo apt<span class="p">-</span><span class="k">get</span> autoclean
+$ sudo apt<span class="p">-</span><span class="k">get</span> clean</code></pre></div>
+
+
+<p>Last thing before we restart.  Open up a terminal window.  Click on <code>Edit</code> then select <code>Profile Preferences</code>.  Click on the <code>Title &amp; Command tab</code> and then check the <code>run as command login shell</code> checkbox.  Close the terminal and reopen a new one.</p>
+
+<p>Both of those commands will clean out any 'fluff' that remains such as partial packages and the apt cache.</p>
+
+<hr />
+
+<h3>For Virtual Machines</h3>
+
+<p>If you are running a virtual machine, it's at this point you would install <a href="https://www.virtualbox.org/">Virtualbox</a> guest additions or <a href="http://www.vmware.com/products/player">VMWare</a> Tools.  If you are running a standalone system, you can skip this section and move along to step three.</p>
+
+<h6>VMWare Tools</h6>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo apt<span class="p">-</span><span class="k">get</span> install open<span class="p">-</span>vm<span class="p">-</span>tools open<span class="p">-</span>vm<span class="p">-</span>dkms</code></pre></div>
+
+
+<h6>Virtualbox Guest Additions</h6>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo apt<span class="p">-</span><span class="k">get</span> install dkms virtualbox<span class="p">-</span>guest<span class="p">-</span>additions</code></pre></div>
+
+
+<p>Many other tutorials will suggest doing this a different way, but I've found this is the easiest and quickest way.</p>
+
+<p>After you have finished installing the guest additions or VMWare tools, now would be a good time to restart.</p>
+
+<hr />
+
+<h3>Servers and Major Packages</h3>
+
+<p>Since our aim is web development, we're going to need Google Chrome and Firefox.</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo apt<span class="p">-</span><span class="k">get</span> install chromium<span class="p">-</span>browser firefox</code></pre></div>
+
+
+<p>It's at this point I usually install Docky.  Docky is a Linux version of Apple's app dock.  I've found Docky to be indispensable and makes me feel so much more productive.  All the apps I need are right there waiting for me.</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo apt<span class="p">-</span><span class="k">get</span> install docky</code></pre></div>
+
+
+<p>You could also install Docky via the Ubuntu Softawre center.</p>
+
+<p>The next app we're going to install we'll have to get through the software center.  Open up <code>Ubuntu Software Center</code> and do a search for <code>Terminator</code>.  <a href="http://gnometerminator.blogspot.com/p/introduction.html">Terminator</a> is a souped terminal that allows multiple windows to be tiled in the same frame.  I simply can't live without it and in my opinion is a must have!</p>
+
+<p>The last app we need to install is <a href="http://www.sublimetext.com/3">Sublime Text 3</a>.  Sublime Text is a code editor on par with (and in my opinion, better than) NotePad++, Emacs and Vim.  To get this one running we need to navigate to their site and click on the Ubuntu 64 bit download.  This will download a <code>.deb</code> file.  One that finishes we can double click on that file and install normally.</p>
+
+<p>After the install completes open up Sublime Text.  From the menu select view, then show console.  There will be a terminal bar that opens up at the bottom.  Now we are going to install Sublime <a href="https://sublime.wbond.net/installation" target="_blank">Package Control</a>.  Follow the link for the instructions on that one.  It's pretty much a copy and paste, but there is a lot of code.  So copy carefully!</p>
+
+<p>Now we have a package manager for Subline Text!</p>
+
+<p>The last little thing left to do with Sublime Text and that is to install <a href="https://github.com/jisaacks/GitGutter">GitGutter</a> via the newly installed package manager.  While still in Sublime Text, select <code>Preferences</code> from the menu, then <code>Package Control</code>.  A window will pop up with a list of options, select <code>Package Control: Install Package</code>.  That will take a few minutes to load.  Once it does, type in GitGutter and just click on the the package named <code>GitGutter</code>.</p>
+
+<p>Once that completes you are all set!  Well, almost.  There are a few more things left to do still.  We need to get some servers running!!</p>
+
+<hr />
+
+<h3>LAMP Server, PHPmyAdmin, Curl, Git</h3>
+
+<p>Open up a terminal or your freshly installed Terminator.  The next few parts will all be done by the comand line.  First we are going to install a LAMP server (Linux Apache MySQL PHP), PHPmyadmin, CURL, Git and a few other dependencies.  You will be prompted for usernames and passwords as you install.  Be sure to write down your credentials, or at least make them easy for you to remember.</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo apt<span class="p">-</span><span class="k">get</span> install lamp<span class="p">-</span>server^ phpmyadmin git curl libyaml<span class="p">-</span>dev libxslt<span class="p">-</span>dev libxml2<span class="p">-</span>dev libsqlite3<span class="p">-</span>dev</code></pre></div>
+
+
+<p>After those installs complete type the following lines substituting <code>USER</code> for your actual username:</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo usermod <span class="p">-</span><span class="k">a</span> <span class="p">-</span>G www<span class="p">-</span>data USER
+$ sudo chown <span class="p">-</span>R USER:www<span class="p">-</span>data <span class="sr">/var/</span>www/*</code></pre></div>
+
+
+<p>Then there is a little setup for <a href="http://git-scm.com/">Git</a>:</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ git config <span class="p">--</span>global user.name [name]
+$ git config <span class="p">--</span>global user.email [email]
+$ git config <span class="p">--</span>global core.editor <span class="s2">&quot;subl -w&quot;</span></code></pre></div>
+
+
+<p>Next we'll be installing <a href="https://www.ruby-lang.org/en/">Ruby</a> and <a href="http://rvm.io/">RVM</a>.</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ \curl <span class="p">-</span>L https:<span class="sr">//</span><span class="k">get</span>.rvm.io <span class="p">|</span> bash <span class="p">-</span><span class="k">s</span> stable <span class="p">--</span><span class="k">ruby</span><span class="p">=</span><span class="m">2</span>.<span class="m">1</span>.<span class="m">1</span></code></pre></div>
+
+
+<p>Ruby may take a while to install.  So go grab a snack while it does it's magic.  Once that finishes type in the next few lines:</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ rvm <span class="p">--</span>default <span class="k">ruby</span><span class="m">-2</span>.<span class="m">1</span>.<span class="m">1</span>
+
+$ <span class="k">ruby</span> <span class="p">-</span><span class="k">v</span>
+$ rvm <span class="p">-</span><span class="k">v</span></code></pre></div>
+
+
+<p>If get version numbers after typing in the <code>-v</code> commands, everything worked!  Once you've got Ruby, you're going to need to have <a href="http://rubyonrails.org/">Ruby on Rails</a> and <a href="http://sass-lang.com/">SASS</a> too!</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ gem install rails <span class="p">--</span><span class="k">version</span> <span class="m">4</span>.<span class="m">0</span>.<span class="m">4</span>
+$ gem install compass
+
+$ <span class="k">mkdir</span> rails_projects</code></pre></div>
+
+
+<p>The last main package we are going to install is <a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">node.js</a>.  I can't verify this next step, but if this works things have gotten much easier for installing Node!  The last time I installed nodejs it was much more complicated, although nodejs has been gaining a lot of traction lately.  It was only a matter of time before the install was simplified!</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ curl <span class="p">-</span>sL https:<span class="sr">//</span>deb.nodesource.<span class="k">com</span>/setup <span class="p">|</span> sudo bash <span class="p">-</span>
+
+$ sudo apt<span class="p">-</span><span class="k">get</span> install nodejs</code></pre></div>
+
+
+<hr />
+
+<h3>UI &amp; Performance Tweaks</h3>
+
+<p>There are going to be a lot of commands in this section.  The goal is to speed things up a little and also give you a little more control over the UI.</p>
+
+<p>Now we're going to download a few packages for some UI Tweaks.</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo apt<span class="p">-</span><span class="k">get</span> install unity<span class="p">-</span>tweak<span class="p">-</span>tool gnome<span class="p">-</span>tweak<span class="p">-</span>tool compizconfig<span class="p">-</span>settings<span class="p">-</span>manager compiz<span class="p">-</span>plugins<span class="p">-</span>extra gnome<span class="p">-</span>session<span class="p">-</span>fallback</code></pre></div>
+
+
+<h6>Disable guest/remote login</h6>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo gedit <span class="sr">/etc/</span>lightdm/lightdm.<span class="k">conf</span>
+
+allow<span class="p">-</span>guest<span class="p">=</span>false
+greeter<span class="p">-</span>show<span class="p">-</span>remote<span class="p">-</span>login<span class="p">=</span>false</code></pre></div>
+
+
+<h6>Disable crash reports</h6>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo gedit <span class="sr">/etc/</span>default/apport
+
+enabled<span class="p">=</span><span class="m">0</span></code></pre></div>
+
+
+<h6>Disable dash serch/logging</h6>
+
+<p>Navigate to <code>Settings</code>, click on <code>Privacy</code>, then click <code>Disable dash search</code>.</p>
+
+<hr />
+
+<h3>Last little bits</h3>
+
+<p>And that pretty much covers it.  The last little bit would be FTP, GIMP and MySQL Workbench.  All of these can be installed directly from the command line:</p>
+
+<div class="highlight"><pre><code class="language-vim" data-lang="vim">$ sudo apt<span class="p">-</span><span class="k">get</span> install filezilla gimp inkscape mysql<span class="p">-</span>workbench</code></pre></div>
+
+
+<p>If you've followed all the steps and made it this far down, you are well on your way towards linux Web Development.  I breezed over many topics I may cover in greater detail in the future.  I hope this article was helpful and I hope you will enjoy developing in Linux just as much as I do!!</p>
+
+<hr />
+
+<h5>References</h5>
+
+<ul>
+<li><a href="https://www.virtualbox.org/">Virtualbox</a></li>
+<li><a href="http://www.vmware.com/products/player">VMWare Player</a></li>
+<li><a href="http://wiki.go-docky.com/index.php?title=Welcome_to_the_Docky_wiki">Docky</a></li>
+<li><a href="http://gnometerminator.blogspot.com/p/introduction.html">Terminator</a></li>
+<li><a href="http://www.sublimetext.com/3">Sublime Text</a></li>
+<li><a href="https://github.com/jisaacks/GitGutter">GitGutter</a></li>
+<li><a href="http://en.wikipedia.org/wiki/LAMP_(software_bundle)">LAMP Server</a></li>
+<li><a href="http://www.phpmyadmin.net/home_page/index.php">PHPmyAdmin</a></li>
+<li><a href="http://git-scm.com/">Git</a></li>
+<li><a href="https://www.ruby-lang.org/en/">Ruby</a></li>
+<li><a href="http://rvm.io/">RVM</a></li>
+<li><a href="http://rubyonrails.org/">Ruby on Rails</a></li>
+<li><a href="http://sass-lang.com/">SASS</a></li>
+<li><a href="https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager">Node.js</a></li>
+<li><a href="https://filezilla-project.org/">FileZilla</a></li>
+<li><a href="http://www.gimp.org/">GIMP</a></li>
+<li><a href="http://dev.mysql.com/downloads/workbench/">MySQL Workbench</a></li>
+</ul>
+
+
+    		
+    	</article>
+    </div><!-- /.col-md-12 -->    
+  </div><!-- /.row -->
+</div><!-- /.container-fluid -->
+
+<div class="container-fluid">
+  <div class="row post-meta text-center">
+
+    <div class="col-sm-5">
+	<!-- Categories -->
+  	
+	<ul class="post-meta-category">
+		<li>
+			<span class="glyphicon glyphicon-folder-open"></span>
+			<a href="/categories/">Category:</a>
+		</li>
+
+		
+	    
+	    
+	    
+	      <li>
+		      <button type="button" class="btn btn-default btn-md" data-size="1">
+			      <span class="glyphicon glyphicon glyphicon-file"></span>
+			      <a href="/categories/#linux">
+			        linux
+			      </a>
+		      </button>
+	      </li>
+	    
+	    
+	  
+	    
+
+	</ul>
+	 		
+</div><!-- /.col-sm-5 -->
+
+
+    <div class="col-sm-5 col-sm-offset-2 text-left">
+	
+	
+	<ul class="post-meta-tags">
+		<li>
+			<span class="glyphicon glyphicon glyphicon-tags"></span>
+			<a href="/tags/">Tags:</a>
+		</li>
+
+		
+		
+		
+
+		<li>
+	      <button type="button" class="btn btn-default btn-md" data-size="1">
+		      <span class="glyphicon glyphicon glyphicon-tag"></span>
+		      <a href="/tags/#linux">
+		        linux
+		      </a>
+	      </button>
+      </li>
+
+      
+
+		<li>
+	      <button type="button" class="btn btn-default btn-md" data-size="1">
+		      <span class="glyphicon glyphicon glyphicon-tag"></span>
+		      <a href="/tags/#ubuntu">
+		        ubuntu
+		      </a>
+	      </button>
+      </li>
+
+      
+
+		<li>
+	      <button type="button" class="btn btn-default btn-md" data-size="2">
+		      <span class="glyphicon glyphicon glyphicon-tag"></span>
+		      <a href="/tags/#git">
+		        git
+		      </a>
+	      </button>
+      </li>
+
+      
+
+		<li>
+	      <button type="button" class="btn btn-default btn-md" data-size="1">
+		      <span class="glyphicon glyphicon glyphicon-tag"></span>
+		      <a href="/tags/#ruby">
+		        ruby
+		      </a>
+	      </button>
+      </li>
+
+      
+
+		<li>
+	      <button type="button" class="btn btn-default btn-md" data-size="1">
+		      <span class="glyphicon glyphicon glyphicon-tag"></span>
+		      <a href="/tags/#rails">
+		        rails
+		      </a>
+	      </button>
+      </li>
+
+      
+
+		<li>
+	      <button type="button" class="btn btn-default btn-md" data-size="1">
+		      <span class="glyphicon glyphicon glyphicon-tag"></span>
+		      <a href="/tags/#nodejs">
+		        nodejs
+		      </a>
+	      </button>
+      </li>
+
+      
+      
+      	
+
+	</ul>
+	 
+</div>
+
+  </div><!-- /.row .post-meta -->
+    
+
+  <!-- Pagination -->
+
+<div class="row ng-frame-pager text-center">
+
+
+  <div class="col-xs-6 col-sm-5"><a href="/git/2014/08/18/close-git-issue-with-commit-message/" rel="prev">&larr; Close GitHub Issue With Commit Message</a></div>
+
+
+
+
+  <div class="col-xs-6 col-sm-5 col-sm-offset-2"><a href="#" rel="prev"><i>no newer posts</i></a></div>
+
+
+</div><!-- /.row -->
+
+
+
+</div><!-- /.container-fluid -->  
+
+<footer class="container-fluid primary-footer text-center">
+
+  <div class="row">
+    <div class="col-sm-6">
+		<p>subscribe <a href="/feed.xml">via RSS</a></p>
+    </div><!-- /.col-md-6 -->
+	<div class="col-sm-6">
+		<ul class="social-links">
+      <li><a href="#">twitter</a></li>
+      <li><a href="#">github</a></li>
+      <li><a href="#">flickr</a></li>
+      <li><a href="#">gplus</a></li>
+    </ul>
+	</div><!-- /.col-md-6 --> 
+  </div><!-- /.row -->
+
+  <div class="row footer-copy">
+    <div class="col-md-12">
+		  <p>
+        &copy; 2014 <a href="mailto:nate@nategeslin.com">Nate Geslin</a>. Powered by <a href="http://jekyllrb.com/" title="Jekyll">Jekyll</a>.  Code hosted on <a href="https://github.com/" title="GitHub">GitHub</a>
+      </p>
+    </div><!-- /.col-md-12 -->
+  </div><!-- /.row -->
+
+</footer>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

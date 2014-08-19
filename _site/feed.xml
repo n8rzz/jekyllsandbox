@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>n8g with jekyll</title>
+    <description>Jekyll sandbox.  Lets play with Jekyll!</description>
+    <link>http://localhost:9000/</link>
+    <atom:link href="http://localhost:9000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 19 Aug 2014 11:21:40 -0500</pubDate>
+    <lastBuildDate>Tue, 19 Aug 2014 11:21:40 -0500</lastBuildDate>
+    <generator>Jekyll v2.2.0</generator>
+    
+      <item>
+        <title>Setting up Ubunutu for Web Development</title>
+        <description>&lt;p&gt;This article assumes you have already installed Ubuntu, whether it&#39;s as a virutal machine or as a stand-alone system, there are a few things that you need to install and setup to get your web development enviroment up and running.  The following procedures are steps I&#39;ve put together and tested with multiple Ubunutu setups both virtual and standalone.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3&gt;Prepare the System&lt;/h3&gt;
+
+&lt;p&gt;The very first thing you should do immediately after completing the installation process is updating and upgrading your Ubuntu distribution.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;update&lt;/span&gt;
+$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; upgrade
+$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; dist&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This could take a little while.  There are usually a lot of things that need updating after installing Ubunutu.  After you have finished with the updates and upgrades, run the following commands to clean things up:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; autoclean
+$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; clean&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Last thing before we restart.  Open up a terminal window.  Click on &lt;code&gt;Edit&lt;/code&gt; then select &lt;code&gt;Profile Preferences&lt;/code&gt;.  Click on the &lt;code&gt;Title &amp;amp; Command tab&lt;/code&gt; and then check the &lt;code&gt;run as command login shell&lt;/code&gt; checkbox.  Close the terminal and reopen a new one.&lt;/p&gt;
+
+&lt;p&gt;Both of those commands will clean out any &#39;fluff&#39; that remains such as partial packages and the apt cache.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3&gt;For Virtual Machines&lt;/h3&gt;
+
+&lt;p&gt;If you are running a virtual machine, it&#39;s at this point you would install &lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;Virtualbox&lt;/a&gt; guest additions or &lt;a href=&quot;http://www.vmware.com/products/player&quot;&gt;VMWare&lt;/a&gt; Tools.  If you are running a standalone system, you can skip this section and move along to step three.&lt;/p&gt;
+
+&lt;h6&gt;VMWare Tools&lt;/h6&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; install open&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;vm&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;tools open&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;vm&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;dkms&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h6&gt;Virtualbox Guest Additions&lt;/h6&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; install dkms virtualbox&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;guest&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;additions&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Many other tutorials will suggest doing this a different way, but I&#39;ve found this is the easiest and quickest way.&lt;/p&gt;
+
+&lt;p&gt;After you have finished installing the guest additions or VMWare tools, now would be a good time to restart.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3&gt;Servers and Major Packages&lt;/h3&gt;
+
+&lt;p&gt;Since our aim is web development, we&#39;re going to need Google Chrome and Firefox.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; install chromium&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;browser firefox&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;It&#39;s at this point I usually install Docky.  Docky is a Linux version of Apple&#39;s app dock.  I&#39;ve found Docky to be indispensable and makes me feel so much more productive.  All the apps I need are right there waiting for me.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; install docky&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You could also install Docky via the Ubuntu Softawre center.&lt;/p&gt;
+
+&lt;p&gt;The next app we&#39;re going to install we&#39;ll have to get through the software center.  Open up &lt;code&gt;Ubuntu Software Center&lt;/code&gt; and do a search for &lt;code&gt;Terminator&lt;/code&gt;.  &lt;a href=&quot;http://gnometerminator.blogspot.com/p/introduction.html&quot;&gt;Terminator&lt;/a&gt; is a souped terminal that allows multiple windows to be tiled in the same frame.  I simply can&#39;t live without it and in my opinion is a must have!&lt;/p&gt;
+
+&lt;p&gt;The last app we need to install is &lt;a href=&quot;http://www.sublimetext.com/3&quot;&gt;Sublime Text 3&lt;/a&gt;.  Sublime Text is a code editor on par with (and in my opinion, better than) NotePad++, Emacs and Vim.  To get this one running we need to navigate to their site and click on the Ubuntu 64 bit download.  This will download a &lt;code&gt;.deb&lt;/code&gt; file.  One that finishes we can double click on that file and install normally.&lt;/p&gt;
+
+&lt;p&gt;After the install completes open up Sublime Text.  From the menu select view, then show console.  There will be a terminal bar that opens up at the bottom.  Now we are going to install Sublime &lt;a href=&quot;https://sublime.wbond.net/installation&quot; target=&quot;_blank&quot;&gt;Package Control&lt;/a&gt;.  Follow the link for the instructions on that one.  It&#39;s pretty much a copy and paste, but there is a lot of code.  So copy carefully!&lt;/p&gt;
+
+&lt;p&gt;Now we have a package manager for Subline Text!&lt;/p&gt;
+
+&lt;p&gt;The last little thing left to do with Sublime Text and that is to install &lt;a href=&quot;https://github.com/jisaacks/GitGutter&quot;&gt;GitGutter&lt;/a&gt; via the newly installed package manager.  While still in Sublime Text, select &lt;code&gt;Preferences&lt;/code&gt; from the menu, then &lt;code&gt;Package Control&lt;/code&gt;.  A window will pop up with a list of options, select &lt;code&gt;Package Control: Install Package&lt;/code&gt;.  That will take a few minutes to load.  Once it does, type in GitGutter and just click on the the package named &lt;code&gt;GitGutter&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once that completes you are all set!  Well, almost.  There are a few more things left to do still.  We need to get some servers running!!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3&gt;LAMP Server, PHPmyAdmin, Curl, Git&lt;/h3&gt;
+
+&lt;p&gt;Open up a terminal or your freshly installed Terminator.  The next few parts will all be done by the comand line.  First we are going to install a LAMP server (Linux Apache MySQL PHP), PHPmyadmin, CURL, Git and a few other dependencies.  You will be prompted for usernames and passwords as you install.  Be sure to write down your credentials, or at least make them easy for you to remember.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; install lamp&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;server^ phpmyadmin git curl libyaml&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;dev libxslt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;dev libxml2&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;dev libsqlite3&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;dev&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After those installs complete type the following lines substituting &lt;code&gt;USER&lt;/code&gt; for your actual username:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo usermod &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;G www&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;data USER
+$ sudo chown &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;R USER:www&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;data &lt;span class=&quot;sr&quot;&gt;/var/&lt;/span&gt;www/*&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Then there is a little setup for &lt;a href=&quot;http://git-scm.com/&quot;&gt;Git&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ git config &lt;span class=&quot;p&quot;&gt;--&lt;/span&gt;global user.name [name]
+$ git config &lt;span class=&quot;p&quot;&gt;--&lt;/span&gt;global user.email [email]
+$ git config &lt;span class=&quot;p&quot;&gt;--&lt;/span&gt;global core.editor &lt;span class=&quot;s2&quot;&gt;&amp;quot;subl -w&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Next we&#39;ll be installing &lt;a href=&quot;https://www.ruby-lang.org/en/&quot;&gt;Ruby&lt;/a&gt; and &lt;a href=&quot;http://rvm.io/&quot;&gt;RVM&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ \curl &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;L https:&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;.rvm.io &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; bash &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;s&lt;/span&gt; stable &lt;span class=&quot;p&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ruby&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;2&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ruby may take a while to install.  So go grab a snack while it does it&#39;s magic.  Once that finishes type in the next few lines:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ rvm &lt;span class=&quot;p&quot;&gt;--&lt;/span&gt;default &lt;span class=&quot;k&quot;&gt;ruby&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-2&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+
+$ &lt;span class=&quot;k&quot;&gt;ruby&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;
+$ rvm &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;v&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If get version numbers after typing in the &lt;code&gt;-v&lt;/code&gt; commands, everything worked!  Once you&#39;ve got Ruby, you&#39;re going to need to have &lt;a href=&quot;http://rubyonrails.org/&quot;&gt;Ruby on Rails&lt;/a&gt; and &lt;a href=&quot;http://sass-lang.com/&quot;&gt;SASS&lt;/a&gt; too!&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ gem install rails &lt;span class=&quot;p&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;.&lt;span class=&quot;m&quot;&gt;4&lt;/span&gt;
+$ gem install compass
+
+$ &lt;span class=&quot;k&quot;&gt;mkdir&lt;/span&gt; rails_projects&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The last main package we are going to install is &lt;a href=&quot;https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager&quot;&gt;node.js&lt;/a&gt;.  I can&#39;t verify this next step, but if this works things have gotten much easier for installing Node!  The last time I installed nodejs it was much more complicated, although nodejs has been gaining a lot of traction lately.  It was only a matter of time before the install was simplified!&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ curl &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;sL https:&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt;deb.nodesource.&lt;span class=&quot;k&quot;&gt;com&lt;/span&gt;/setup &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sudo bash &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;
+
+$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; install nodejs&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;hr /&gt;
+
+&lt;h3&gt;UI &amp;amp; Performance Tweaks&lt;/h3&gt;
+
+&lt;p&gt;There are going to be a lot of commands in this section.  The goal is to speed things up a little and also give you a little more control over the UI.&lt;/p&gt;
+
+&lt;p&gt;Now we&#39;re going to download a few packages for some UI Tweaks.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; install unity&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;tweak&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;tool gnome&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;tweak&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;tool compizconfig&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;settings&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;manager compiz&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;plugins&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;extra gnome&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;session&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;fallback&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h6&gt;Disable guest/remote login&lt;/h6&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo gedit &lt;span class=&quot;sr&quot;&gt;/etc/&lt;/span&gt;lightdm/lightdm.&lt;span class=&quot;k&quot;&gt;conf&lt;/span&gt;
+
+allow&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;guest&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;false
+greeter&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;show&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;remote&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;login&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;false&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h6&gt;Disable crash reports&lt;/h6&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo gedit &lt;span class=&quot;sr&quot;&gt;/etc/&lt;/span&gt;default/apport
+
+enabled&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h6&gt;Disable dash serch/logging&lt;/h6&gt;
+
+&lt;p&gt;Navigate to &lt;code&gt;Settings&lt;/code&gt;, click on &lt;code&gt;Privacy&lt;/code&gt;, then click &lt;code&gt;Disable dash search&lt;/code&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3&gt;Last little bits&lt;/h3&gt;
+
+&lt;p&gt;And that pretty much covers it.  The last little bit would be FTP, GIMP and MySQL Workbench.  All of these can be installed directly from the command line:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; install filezilla gimp inkscape mysql&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;workbench&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If you&#39;ve followed all the steps and made it this far down, you are well on your way towards linux Web Development.  I breezed over many topics I may cover in greater detail in the future.  I hope this article was helpful and I hope you will enjoy developing in Linux just as much as I do!!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h5&gt;References&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.virtualbox.org/&quot;&gt;Virtualbox&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.vmware.com/products/player&quot;&gt;VMWare Player&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://wiki.go-docky.com/index.php?title=Welcome_to_the_Docky_wiki&quot;&gt;Docky&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://gnometerminator.blogspot.com/p/introduction.html&quot;&gt;Terminator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.sublimetext.com/3&quot;&gt;Sublime Text&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/jisaacks/GitGutter&quot;&gt;GitGutter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/LAMP_(software_bundle)&quot;&gt;LAMP Server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.phpmyadmin.net/home_page/index.php&quot;&gt;PHPmyAdmin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://git-scm.com/&quot;&gt;Git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.ruby-lang.org/en/&quot;&gt;Ruby&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://rvm.io/&quot;&gt;RVM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://rubyonrails.org/&quot;&gt;Ruby on Rails&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://sass-lang.com/&quot;&gt;SASS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager&quot;&gt;Node.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://filezilla-project.org/&quot;&gt;FileZilla&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.gimp.org/&quot;&gt;GIMP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://dev.mysql.com/downloads/workbench/&quot;&gt;MySQL Workbench&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 18 Aug 2014 15:44:23 -0500</pubDate>
+        <link>http://localhost:9000/linux/2014/08/18/setting-up-ubuntu-for-web-development/</link>
+        <guid isPermaLink="true">http://localhost:9000/linux/2014/08/18/setting-up-ubuntu-for-web-development/</guid>
+        
+        <category>linux</category>
+        
+        <category>ubuntu</category>
+        
+        <category>git</category>
+        
+        <category>ruby</category>
+        
+        <category>rails</category>
+        
+        <category>nodejs</category>
+        
+        
+        <category>linux</category>
+        
+      </item>
+    
+      <item>
+        <title>Close GitHub Issue With Commit Message</title>
+        <description>&lt;p&gt;Did you know you can close a GitHub issue with a commit message?  I didn&#39;t know that either, until recently.  It&#39;s turned out to be a pretty handy feature.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;git commit &lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;closes #13&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You don&#39;t have to be closing an issue to mention it in a commit.  There are several keywords you can use to reference issues; &lt;code&gt;started&lt;/code&gt;, &lt;code&gt;continued&lt;/code&gt; or &lt;code&gt;closes&lt;/code&gt; are the main keywords.  You can view the &lt;a href=&quot;https://github.com/blog/1386-closing-issues-via-commit-messages&quot;&gt;GitHub Blog&lt;/a&gt; for a little more information on the issue.&lt;/p&gt;
+
+&lt;p&gt;I tend to create an issue for everything I want to change with my site, so I tend to have a lot of open issues.  Being able to close issues witha commit message makes it super easy to keep track of what I&#39;ve done work on, what I&#39;m working on, and what I&#39;ve finished working on.&lt;/p&gt;
+
+&lt;h5&gt;References&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/blog/1386-closing-issues-via-commit-messages&quot;&gt;GitHub Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 18 Aug 2014 13:00:00 -0500</pubDate>
+        <link>http://localhost:9000/git/2014/08/18/close-git-issue-with-commit-message/</link>
+        <guid isPermaLink="true">http://localhost:9000/git/2014/08/18/close-git-issue-with-commit-message/</guid>
+        
+        <category>git</category>
+        
+        
+        <category>git</category>
+        
+      </item>
+    
+      <item>
+        <title>Grunt with Jekyll</title>
+        <description>&lt;p&gt;Below you will find my &#39;current&#39; &lt;a href=&quot;https://github.com/n8rzz/jekyllsandbox/blob/master/Gruntfile.js&quot;&gt;Gruntfile.js&lt;/a&gt;.  It&#39;s still very much a work in progess, but I finally have it running smoothly and in a way that suits me.&lt;/p&gt;
+
+&lt;h3&gt;Gruntfile.js Tasks&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;grunt&lt;/code&gt; &amp;amp; &lt;code&gt;grunt watch&lt;/code&gt;
+set to the default grunt task, so either command does the same thing: compiles SASS, minifies resulting CSS file, deletes the non-minified CSS file and finally runs the &lt;code&gt;jekyll build&lt;/code&gt; command with &lt;code&gt;grunt-shell&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;grunt server&lt;/code&gt;
+Starts an express server allowing for livereload.  It also executes the &lt;code&gt;grunt watch&lt;/code&gt; command when any important file changes.  So it does everything above plus running the server on port 9000.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;grunt build&lt;/code&gt;
+Same as &lt;code&gt;grunt watch&lt;/code&gt; for now.  Will be extending this one in the future.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;use strict&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Time how long tasks take. Can help when optimizing build times&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;time-grunt&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;matchdep&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filterDev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;grunt-*&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadNpmTasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;initConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;pkg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;readJSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;package.json&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+
+        &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.0.0.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;bases&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;_site&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;livereload&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;jekyllBuild&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;jekyll build&amp;#39;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;jekyllServer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;jekyll server&amp;#39;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;clean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;css/*.css&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;!css/style.min.css&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;deploy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;_deploy&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;sass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;css/style.css&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;sass/style.scss&amp;#39;&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;cssmin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;minify&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;expand&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;cwd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;css/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;*.css&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;!*.min.css&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;css/&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;ext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;.min.css&amp;#39;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;sass/**/*scss&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;sass:jekyll&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;cssmin&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;clean:css&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;shell:jekyllBuild&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;livereload&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;jekyllSources&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;*.html&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;*.yml&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;assets/js/**.js&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;_posts/**&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;_includes/**&amp;#39;&lt;/span&gt;
+                  &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+                    &lt;span class=&quot;s1&quot;&gt;&amp;#39;shell:jekyllBuild&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;nx&quot;&gt;livereload&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+              &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://localhost:&amp;lt;%= express.all.options.port%&amp;gt;/index.html&amp;#39;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;watch&amp;#39;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;server&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;express&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;open&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;watch&amp;#39;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;build&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;sass:jekyll&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;cssmin&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;clean:css&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s1&quot;&gt;&amp;#39;shell:jekyllBuild&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Below is the &lt;a href=&quot;https://github.com/n8rzz/jekyllsandbox/blob/master/package.json&quot;&gt;package.json&lt;/a&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;jekyllsandbox&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.1.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;n8g with jekyll&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;author&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;nate geslin&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;license&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;MIT&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;repository&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;git&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;url&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;git://github.com/n8rzz/jekyllsandbox&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;quot;devDependencies&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.4.5&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-contrib-clean&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.6.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-contrib-copy&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.5.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-contrib-cssmin&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.10.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-contrib-sass&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.7.4&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-contrib-watch&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.6.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-express&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^1.4.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-open&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.2.3&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;grunt-shell&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.7.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;matchdep&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.3.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;quot;time-grunt&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;^0.4.0&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can view the full code on &lt;a href=&quot;https://github.com/n8rzz/jekyllsandbox&quot;&gt;GitHub&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I&#39;m a relatively recent grunt convert.  But, I can tell you, it is relatively easy to pick up and has the ability to do some amazing things!  The livereload capability alone is enough to at least take a look at it!&lt;/p&gt;
+
+&lt;h5&gt;References&lt;/h5&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://gruntjs.com/getting-started&quot;&gt;grunt.js&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://nodejs.org/&quot;&gt;node.js&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://www.npmjs.org/&quot;&gt;node package manager (npm)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://jekyllrb.com/&quot;&gt;jekyll&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sun, 17 Aug 2014 02:07:00 -0500</pubDate>
+        <link>http://localhost:9000/grunt/2014/08/17/grunt-with-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:9000/grunt/2014/08/17/grunt-with-jekyll/</guid>
+        
+        <category>grunt</category>
+        
+        <category>jekyll</category>
+        
+        
+        <category>grunt</category>
+        
+      </item>
+    
+      <item>
+        <title>Quick Change</title>
+        <description>&lt;p&gt;Wow!  Im am thuroughly impressed with Jekyll and how easy it is to put together.  It&#39;s incredible!  I come from a Wordpress background.  I&#39;ve been toying around with Wordpress for the last 6 or seven years and, like most people, was my go to CMS for putting together a website.&lt;/p&gt;
+
+&lt;p&gt;Over the years, however, as the system expanded it became very clunky.  It can do a lot and is extremely extendable but that comes at a cost, lots of code.  A lots of code.&lt;/p&gt;
+
+&lt;p&gt;Meet &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 12 Aug 2014 19:23:00 -0500</pubDate>
+        <link>http://localhost:9000/jekyll/2014/08/12/quick-change-to-jekyll/</link>
+        <guid isPermaLink="true">http://localhost:9000/jekyll/2014/08/12/quick-change-to-jekyll/</guid>
+        
+        <category>jekyll</category>
+        
+        <category>wordpress</category>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+  </channel>
+</rss>
