@@ -21,7 +21,7 @@ You don't have to be closing an issue to mention it in a commit.  There are seve
 
 I tend to create an issue for everything I want to change with my site, so I tend to have a lot of open issues.  Being able to close issues witha commit message makes it super easy to keep track of what I've done work on, what I'm working on, and what I've finished working on.
 
-####References
+#####References
 - [GitHub Blog][gitblog]
 
 [gitblog]: https://github.com/blog/1386-closing-issues-via-commit-messages

@@ -167,7 +167,7 @@ I'm a relatively recent grunt convert.  But, I can tell you, it is relatively ea
 
 
 
-####References
+#####References
 - [grunt.js][grunt]
 - [node.js][node] & [node package manager (npm)][npm]
 - [jekyll][jekyll]
