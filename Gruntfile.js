@@ -70,6 +70,7 @@ module.exports = function(grunt) {
 		        files: [
 					'*.html',
 					'*.yml',
+					'*.md',
 					'assets/js/**.js',
 					'_posts/**',
 					'_includes/**'
@@ -81,6 +82,12 @@ module.exports = function(grunt) {
 		        	livereload: true
 		        }
 		      },
+		      config: {
+		      	files: ['*.json', '*.js'],
+		      	options: {
+		      		livereload: true
+		      	}
+		      }
 		},
 		open: {
 			all: {
@@ -97,7 +104,11 @@ module.exports = function(grunt) {
 				verbose: true
 			}
 		},
-		changelog: {}
+		changelog: {
+			options: {
+				repository: '<%= pkg.repository.url %>'
+			}
+		}
 	});
 
 	grunt.registerTask('default', [ 'watch' ]);
