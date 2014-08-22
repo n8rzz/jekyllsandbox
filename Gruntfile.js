@@ -52,16 +52,7 @@ module.exports = function(grunt) {
 				dest: 'css/',
 				ext: '.min.css'
 			}
-		}, /*
-		copy: {
-			deploy: {
-				files: {	
-					expand: true,
-					src: ['_site/*'],
-					dest: '_deploy/*'
-				}
-			}
-		}, */
+		},
 		watch: {
 			css: {
 				files: ['sass/**/*scss'],
