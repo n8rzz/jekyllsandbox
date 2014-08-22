@@ -6,7 +6,7 @@ baseurl: ""
 #baseurl: "http://localhost:4000"
 #url: ""
 url: "http://localhost:9000"
-exclude: ["sass", "bower_components", "node_modules", "boilerplate.html", "CHANGELOG.md", "Gruntfile.js", "README.md", "LICENSE", "package.json", "bower.json"]
+exclude: ["sass", "bower_components", "node_modules", "boilerplate.html", "CHANGELOG.md", "Gruntfile.js", "README.md", "LICENSE", "package.json", "bower.json", "post-receive"]
 #twitter_username
 #github_username
 #gplus_username

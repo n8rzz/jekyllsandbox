@@ -4,3 +4,4 @@ Jekyll port of wordpress theme ng-frame
 
 - `grunt watch`
 - `grunt server`
+- `grunt build`
