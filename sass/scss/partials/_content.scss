@@ -1,4 +1,31 @@
 /* content.scss #################### */
+article {
+	margin-top: 1.5em; 
+	padding: 0.5em 0em 0.25em 1em;
+	h3,
+	h4 { 
+		margin-top: 1em;
+		font-size: $h4-size;
+	}
+	h6 { margin-top: 2em;}
+	small {
+		font-family: $ubuntu;
+		font-size: 40%;
+		letter-spacing: -1px;
+	}
+	img {
+		margin: 0.5em 1em;
+	}
+}
+
+hr {
+	width: 85%;
+	margin-top: 2em;
+	
+	border-top: 2px dashed $medium-green;
+}
+hr:last-child {border: none;}
+
 .body-content {
 	min-height: 365px;
 	background: #fff;

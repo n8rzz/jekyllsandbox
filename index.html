@@ -18,7 +18,7 @@ layout: default
 
     {% for post in site.posts %}                
       <article class="text-left">
-        <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> <timedatetime="{{ post.date | date: "%F %R" }}" pubdate>><small>{{ post.date | date: "%b %-d, %Y" }}</small></time></h3>
+        <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> <timedatetime="{{ post.date | date: "%F %R" }}" pubdate><small>{{ post.date | date: "%b %-d, %Y" }}</small></time></h3>
 
         {{ post.excerpt }}
 
