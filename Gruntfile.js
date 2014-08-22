@@ -104,6 +104,15 @@ module.exports = function(grunt) {
 				verbose: true
 			}
 		},
+		release: {
+			options: {
+				npm: false,
+				npmtag: false,
+				tagName: 'v<%= version %>',
+				commitMessage: 'release v<%= version %>',
+				tagMessage: 'Version <%= version %>',
+			}
+		},
 		changelog: {
 			options: {
 				repository: '<%= pkg.repository.url %>'
@@ -127,11 +136,15 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('deploy', [
+		'shell:jekyllBuild',
 		'sync:deploy',
 		//'clean:deploy',
 		//'shell:jekyllDeploy',
 	]);
 
-	grunt.registerTask('version', 'changelog');
+	grunt.registerTask('newrelease', [
+		'release',
+		'changelog'
+	]);
 
 }
