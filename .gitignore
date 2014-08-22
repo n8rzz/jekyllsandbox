@@ -1,4 +1,5 @@
 .sass-cache
-node_modules
 _deploy
+bower_components
+node_modules
 post-receive
