@@ -9,11 +9,19 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		express: {
-			all: {
+			site: {
 				options: {
 					port: 9000,
 					hostname: "0.0.0.0",
 					bases: ['_site'],
+					livereload: true,
+				}
+			},
+			docs: {
+				options: {
+					port: 9001,
+					hostname: "0.0.0.0",
+					bases: ['docs'],
 					livereload: true,
 				}
 			}
@@ -90,9 +98,12 @@ module.exports = function(grunt) {
 		      }
 		},
 		open: {
-			all: {
-				path: 'http://localhost:<%= express.all.options.port%>/index.html'
-			}
+			site: {
+				path: 'http://localhost:<%= express.site.options.port%>/index.html'
+			},
+			docs: {
+				path: 'http://localhost:<%= express.docs.options.port%>/index.html'
+			}			
 		},
 		sync: {
 			deploy: {
@@ -117,14 +128,21 @@ module.exports = function(grunt) {
 			options: {
 				repository: '<%= pkg.repository.url %>'
 			}
+		},
+		hologram: {
+			generate: {
+				options: {
+					config: 'hologram_config.yml'
+				}
+			}
 		}
 	});
 
 	grunt.registerTask('default', [ 'watch' ]);
 
 	grunt.registerTask('server', [
-		'express',
-		'open',
+		'express:site',
+		'open:site',
 		'watch'
 	]);
 
@@ -145,6 +163,12 @@ module.exports = function(grunt) {
 	grunt.registerTask('newrelease', [
 		'release',
 		'changelog'
+	]);
+
+	grunt.registerTask('docs', [
+		'hologram',
+		'express:docs',
+		'open:docs'
 	]);
 
 }

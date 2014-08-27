@@ -17,6 +17,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-conventional-changelog": "^1.1.0",
     "grunt-express": "^1.4.1",
+    "grunt-hologram": "0.0.4",
     "grunt-open": "^0.2.3",
     "grunt-release": "^0.7.0",
     "grunt-shell": "^0.7.0",
