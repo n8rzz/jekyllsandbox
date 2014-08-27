@@ -1,4 +1,4 @@
-Jekyll port of wordpress theme ng-frame
+Jekyll blog site for <a href="nategeslin.com">n8g</a>
 
 ###Grunt Tasks
 

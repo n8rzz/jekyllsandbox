@@ -4,7 +4,11 @@ layout: default
 
 <div class="container-fluid jumbotron primary-header text-center">  
   <div class="row">
-    <h1>{{ site.title }} <small>{{ site.description }}</small></h1>
+    <header>
+      <h1>{{ site.title }} 
+        <small>{{ site.description }}</small>
+      </h1>
+    </header>
   </div><!-- /.row -->
 </div><!-- /.jumbotron -->
 
@@ -12,9 +16,9 @@ layout: default
   <div class="row">
     <div class="col-md-12">
 
-{% for post in site.posts %}                
+    {% for post in site.posts %}                
       <article class="text-left">
-        <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> <small>{{ post.date | date: "%b %-d, %Y" }}</small></h3>
+        <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a> <timedatetime="{{ post.date | date: "%F %R" }}" pubdate><small>{{ post.date | date: "%b %-d, %Y" }}</small></time></h3>
 
         {{ post.excerpt }}
 
@@ -23,7 +27,7 @@ layout: default
 
       <hr />
 
-{% endfor %}
+    {% endfor %}
 
     </div><!-- /.col-md-12 -->    
   </div><!-- /.row -->

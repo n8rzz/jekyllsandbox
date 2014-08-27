@@ -9,11 +9,19 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		express: {
-			all: {
+			site: {
 				options: {
 					port: 9000,
 					hostname: "0.0.0.0",
 					bases: ['_site'],
+					livereload: true,
+				}
+			},
+			docs: {
+				options: {
+					port: 9001,
+					hostname: "0.0.0.0",
+					bases: ['docs'],
 					livereload: true,
 				}
 			}
@@ -52,16 +60,7 @@ module.exports = function(grunt) {
 				dest: 'css/',
 				ext: '.min.css'
 			}
-		}, /*
-		copy: {
-			deploy: {
-				files: {	
-					expand: true,
-					src: ['_site/*'],
-					dest: '_deploy/*'
-				}
-			}
-		}, */
+		},
 		watch: {
 			css: {
 				files: ['sass/**/*scss'],
@@ -79,6 +78,7 @@ module.exports = function(grunt) {
 		        files: [
 					'*.html',
 					'*.yml',
+					'*.md',
 					'assets/js/**.js',
 					'_posts/**',
 					'_includes/**'
@@ -90,11 +90,20 @@ module.exports = function(grunt) {
 		        	livereload: true
 		        }
 		      },
+		      config: {
+		      	files: ['*.json', '*.js'],
+		      	options: {
+		      		livereload: true
+		      	}
+		      }
 		},
 		open: {
-			all: {
-				path: 'http://localhost:<%= express.all.options.port%>/index.html'
-			}
+			site: {
+				path: 'http://localhost:<%= express.site.options.port%>/index.html'
+			},
+			docs: {
+				path: 'http://localhost:<%= express.docs.options.port%>/index.html'
+			}			
 		},
 		sync: {
 			deploy: {
@@ -106,14 +115,34 @@ module.exports = function(grunt) {
 				verbose: true
 			}
 		},
-		changelog: {}
+		release: {
+			options: {
+				npm: false,
+				npmtag: false,
+				tagName: 'v<%= version %>',
+				commitMessage: 'release v<%= version %>',
+				tagMessage: 'Version <%= version %>',
+			}
+		},
+		changelog: {
+			options: {
+				repository: '<%= pkg.repository.url %>'
+			}
+		},
+		hologram: {
+			generate: {
+				options: {
+					config: 'hologram_config.yml'
+				}
+			}
+		}
 	});
 
 	grunt.registerTask('default', [ 'watch' ]);
 
 	grunt.registerTask('server', [
-		'express',
-		'open',
+		'express:site',
+		'open:site',
 		'watch'
 	]);
 
@@ -125,11 +154,21 @@ module.exports = function(grunt) {
 	]);
 
 	grunt.registerTask('deploy', [
+		'shell:jekyllBuild',
 		'sync:deploy',
 		//'clean:deploy',
 		//'shell:jekyllDeploy',
 	]);
 
-	grunt.registerTask('version', 'changelog');
+	grunt.registerTask('newrelease', [
+		'release',
+		'changelog'
+	]);
+
+	grunt.registerTask('docs', [
+		'hologram',
+		'express:docs',
+		'open:docs'
+	]);
 
 }
