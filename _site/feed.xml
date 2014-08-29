@@ -5,13 +5,13 @@
     <description>Anything and everything {but mostly computer stuff}</description>
     <link>http://localhost:9000/</link>
     <atom:link href="http://localhost:9000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 28 Aug 2014 22:05:50 -0500</pubDate>
-    <lastBuildDate>Thu, 28 Aug 2014 22:05:50 -0500</lastBuildDate>
+    <pubDate>Thu, 28 Aug 2014 22:37:59 -0500</pubDate>
+    <lastBuildDate>Thu, 28 Aug 2014 22:37:59 -0500</lastBuildDate>
     <generator>Jekyll v2.2.0</generator>
     
       <item>
-        <title>Setting up Ubunutu for Web Development</title>
-        <description>&lt;p&gt;This article assumes you have already installed Ubuntu, whether it&#39;s as a virutal machine or as a stand-alone system, there are a few things that you need to install and setup to get your web development enviroment up and running.  The following procedures are steps I&#39;ve put together and tested with multiple Ubunutu setups both virtual and standalone.&lt;/p&gt;
+        <title>Setting up Ubuntu for Web Development</title>
+        <description>&lt;p&gt;This article assumes you have already installed Ubuntu, whether it&#39;s as a virutal machine or as a stand-alone system, there are a few things that you need to install and setup to get your web development enviroment up and running.  The following procedures are steps I&#39;ve put together and tested with multiple Ubuntu setups both virtual and standalone.&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -24,7 +24,7 @@ $ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&q
 $ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; dist&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;upgrade&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;This could take a little while.  There are usually a lot of things that need updating after installing Ubunutu.  After you have finished with the updates and upgrades, run the following commands to clean things up:&lt;/p&gt;
+&lt;p&gt;This could take a little while.  There are usually a lot of things that need updating after installing Ubuntu.  After you have finished with the updates and upgrades, run the following commands to clean things up:&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-vim&quot; data-lang=&quot;vim&quot;&gt;$ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; autoclean
 $ sudo apt&lt;span class=&quot;p&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;get&lt;/span&gt; clean&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
