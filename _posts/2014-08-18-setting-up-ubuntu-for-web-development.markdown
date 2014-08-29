@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Setting up Ubunutu for Web Development 
+title: Setting up Ubuntu for Web Development 
 date: 2014-08-18 20:44:23
 categories:
 - linux 
@@ -14,7 +14,7 @@ tags:
 
 ---
 
-This article assumes you have already installed Ubuntu, whether it's as a virutal machine or as a stand-alone system, there are a few things that you need to install and setup to get your web development enviroment up and running.  The following procedures are steps I've put together and tested with multiple Ubunutu setups both virtual and standalone.
+This article assumes you have already installed Ubuntu, whether it's as a virutal machine or as a stand-alone system, there are a few things that you need to install and setup to get your web development enviroment up and running.  The following procedures are steps I've put together and tested with multiple Ubuntu setups both virtual and standalone.
 
 ---
 
@@ -27,7 +27,7 @@ $ sudo apt-get upgrade
 $ sudo apt-get dist-upgrade
 {% endhighlight %}
 
-This could take a little while.  There are usually a lot of things that need updating after installing Ubunutu.  After you have finished with the updates and upgrades, run the following commands to clean things up:
+This could take a little while.  There are usually a lot of things that need updating after installing Ubuntu.  After you have finished with the updates and upgrades, run the following commands to clean things up:
 
 {% highlight vim script %}
 $ sudo apt-get autoclean
