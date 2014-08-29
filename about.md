@@ -4,6 +4,4 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
-
-This is my own custom text.  Simple as editing a markdown file in my favorite text editor!
+I'm just a nerd with a website sharing some of the information I've learned over the years.
